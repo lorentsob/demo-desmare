@@ -16,13 +16,13 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-accent to-accent/70 p-8 md:p-16"
+          className="relative overflow-hidden rounded-3xl bg-gradient-accent p-8 md:p-16 shadow-section"
         >
           <div className="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 rounded-full bg-white/10 blur-3xl"></div>
           <div className="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 rounded-full bg-white/10 blur-3xl"></div>
 
           <div className="relative z-10 max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+            <h2 className="section-title text-white mb-6">
               Pronti a trasformare il tuo progetto?
             </h2>
             <p className="text-white/90 text-lg md:text-xl mb-8 max-w-2xl mx-auto">

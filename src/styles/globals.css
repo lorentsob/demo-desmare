@@ -6,6 +6,14 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  input, textarea, select {
+    @apply w-full p-3 border border-input-border rounded-md bg-input-bg focus:border-accent focus:ring-1 focus:ring-input-focus outline-none transition-all;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-foreground;
+  }
 }
 
 @layer components {
@@ -14,10 +22,34 @@
   }
   
   .btn {
-    @apply px-4 py-2 rounded-md font-medium transition-colors;
+    @apply px-4 py-2 rounded-md font-medium transition-colors shadow-button;
   }
   
   .btn-primary {
-    @apply bg-accent text-white hover:bg-accent-hover;
+    @apply bg-accent text-white hover:bg-accent-700;
+  }
+  
+  .btn-secondary {
+    @apply bg-white border border-accent text-accent hover:bg-accent-50;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-card border border-border p-6;
+  }
+  
+  .icon-container {
+    @apply w-10 h-10 rounded-full bg-accent-100 flex items-center justify-center flex-shrink-0;
+  }
+  
+  .icon {
+    @apply w-5 h-5 text-accent;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-6;
+  }
+  
+  .section-subtitle {
+    @apply text-xl text-text-secondary mb-10 max-w-3xl;
   }
 }

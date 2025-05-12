@@ -85,10 +85,10 @@ export default function QuoteRequestModal({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="w-full max-w-lg bg-background rounded-lg shadow-xl overflow-hidden"
+            className="card w-full max-w-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-6 sm:p-8">
+            <div className="p-2 sm:p-4">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold">Richiedi un preventivo</h2>
                 <button
@@ -125,7 +125,6 @@ export default function QuoteRequestModal({
                     id="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-md bg-transparent"
                     required
                   />
                 </div>
@@ -142,7 +141,6 @@ export default function QuoteRequestModal({
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-md bg-transparent"
                     required
                   />
                 </div>
@@ -159,7 +157,6 @@ export default function QuoteRequestModal({
                     id="phone"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-md bg-transparent"
                     required
                   />
                 </div>
@@ -175,7 +172,6 @@ export default function QuoteRequestModal({
                     id="service"
                     value={service}
                     onChange={(e) => setService(e.target.value)}
-                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-md bg-transparent"
                     required
                   >
                     <option value="" disabled>
@@ -198,7 +194,6 @@ export default function QuoteRequestModal({
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
-                    className="w-full p-3 border border-gray-300 dark:border-gray-700 rounded-md bg-transparent"
                     required
                   />
                 </div>
