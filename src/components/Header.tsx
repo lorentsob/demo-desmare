@@ -51,7 +51,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="border-b border-white/10 sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
+      <header className="border-b border-white/10 sticky top-0 z-50 bg-background/85 backdrop-blur-lg">
         <div className="container-custom">
           <nav className="flex items-center justify-between py-6">
             <div className="flex items-center">
@@ -186,40 +186,35 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 md:hidden z-40 bg-background/60 backdrop-blur-md flex flex-col"
+            className="fixed inset-0 md:hidden z-40 bg-background/60 backdrop-blur-md"
           >
-            {/* Keep the header layout unchanged */}
-            <div className="container-custom border-b border-white/10 py-6">
-              <div className="flex items-center justify-between">
-                <Link href="/" className="text-2xl font-bold tracking-tight">
-                  Desmare
-                </Link>
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="focus:outline-none"
-                  aria-label="Close menu"
+            {/* Keep the original header visible and just add close button */}
+            <div className="container-custom border-b border-white/10 py-6 flex justify-end">
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="focus:outline-none"
+                aria-label="Close menu"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
             </div>
 
-            {/* Mobile menu content with increased spacing for readability */}
-            <div className="container-custom flex-1 overflow-y-auto">
-              <nav className="flex flex-col space-y-5 py-8 items-start">
+            {/* Mobile menu content */}
+            <div className="container-custom overflow-y-auto">
+              <nav className="flex flex-col space-y-5 py-8">
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
