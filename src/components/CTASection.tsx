@@ -23,7 +23,7 @@ export default function CTASection() {
 
           <div className="relative z-10 max-w-3xl mx-auto text-center">
             <h2 className="section-title text-white mb-6">
-              Pronti a trasformare il tuo progetto?
+              Hai un progetto in mente?
             </h2>
             <p className="text-white/90 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
               Contattaci oggi per una consulenza gratuita e scopri come Desmare
@@ -46,18 +46,7 @@ export default function CTASection() {
               </Link>
             </div>
 
-            <div className="mt-10 flex items-center justify-center">
-              {/* <div className="flex -space-x-2 mr-4">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full border-2 border-white overflow-hidden"
-                  >
-                    <div className="w-full h-full bg-white/30"></div>
-                  </div>
-                ))}
-              </div> */}
-            </div>
+            <div className="mt-10 flex items-center justify-center"></div>
           </div>
         </motion.div>
       </div>

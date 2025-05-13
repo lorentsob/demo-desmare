@@ -98,6 +98,7 @@ module.exports = {
           bg: '#F8F9FA',
           text: '#1A2634',
           'text-secondary': 'rgba(26, 38, 52, 0.75)',
+          'text-light': '#F8F9FA',
           accent: '#388E3C',
           border: 'rgba(26, 38, 52, 0.08)',
           'accent-transparent': 'rgba(56, 142, 60, 0.08)',
