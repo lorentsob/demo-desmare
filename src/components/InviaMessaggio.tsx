@@ -3,32 +3,75 @@
 import { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/Card";
 import { Button } from "./ui/Button";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+// Define validation schema with zod
+const contactFormSchema = z.object({
+  name: z.string().min(2, { message: "Nome troppo corto" }).max(50),
+  email: z.string().email({ message: "Email non valida" }),
+  message: z.string().min(10, { message: "Messaggio troppo corto" }).max(500),
+});
+
+// Type for our form values
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 export default function InviaMessaggio() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
+    setIsError(false);
+    setIsSuccess(false);
+    setErrorMessage("");
 
-    // Simulating form submission
-    setTimeout(() => {
-      // Reset form state
-      setName("");
-      setEmail("");
-      setMessage("");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || "Errore durante l'invio del messaggio"
+        );
+      }
+
+      console.log("Form submitted:", data);
+      reset();
+      setIsSuccess(true);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setIsError(true);
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Si è verificato un errore. Riprova più tardi."
+      );
+    } finally {
       setIsSubmitting(false);
-
-      // Here you would typically submit to your actual backend
-      console.log({ name, email, message });
-
-      // Show success message
-      alert("Messaggio inviato con successo!");
-    }, 1000);
+    }
   };
 
   return (
@@ -40,7 +83,19 @@ export default function InviaMessaggio() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          {isSuccess && (
+            <div className="mb-4 p-3 bg-success-light text-success rounded-md">
+              Messaggio inviato con successo!
+            </div>
+          )}
+
+          {isError && (
+            <div className="mb-4 p-3 bg-error-light text-error rounded-md">
+              {errorMessage || "Si è verificato un errore. Riprova più tardi."}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-1">
                 Nome e Cognome
@@ -48,10 +103,12 @@ export default function InviaMessaggio() {
               <input
                 type="text"
                 id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
+                className={`w-full ${errors.name ? "border-error" : ""}`}
+                {...register("name")}
               />
+              {errors.name && (
+                <p className="mt-1 text-sm text-error">{errors.name.message}</p>
+              )}
             </div>
 
             <div>
@@ -61,10 +118,14 @@ export default function InviaMessaggio() {
               <input
                 type="email"
                 id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+                className={`w-full ${errors.email ? "border-error" : ""}`}
+                {...register("email")}
               />
+              {errors.email && (
+                <p className="mt-1 text-sm text-error">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             <div>
@@ -76,11 +137,15 @@ export default function InviaMessaggio() {
               </label>
               <textarea
                 id="message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
                 rows={4}
-                required
+                className={`w-full ${errors.message ? "border-error" : ""}`}
+                {...register("message")}
               />
+              {errors.message && (
+                <p className="mt-1 text-sm text-error">
+                  {errors.message.message}
+                </p>
+              )}
             </div>
 
             <Button

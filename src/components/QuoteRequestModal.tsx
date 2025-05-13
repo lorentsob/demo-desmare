@@ -2,6 +2,24 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+// Define validation schema with zod
+const quoteFormSchema = z.object({
+  name: z.string().min(2, { message: "Nome troppo corto" }).max(50),
+  email: z.string().email({ message: "Email non valida" }),
+  phone: z
+    .string()
+    .min(6, { message: "Numero di telefono non valido" })
+    .max(20),
+  service: z.string().min(1, { message: "Seleziona un servizio" }),
+  message: z.string().min(10, { message: "Messaggio troppo corto" }).max(500),
+});
+
+// Type for our form values
+type QuoteFormValues = z.infer<typeof quoteFormSchema>;
 
 interface QuoteRequestModalProps {
   isOpen: boolean;
@@ -12,14 +30,27 @@ export default function QuoteRequestModal({
   isOpen,
   onClose,
 }: QuoteRequestModalProps) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [service, setService] = useState("");
-  const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<QuoteFormValues>({
+    resolver: zodResolver(quoteFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+    },
+  });
 
   // Handle ESC key press
   useEffect(() => {
@@ -40,6 +71,16 @@ export default function QuoteRequestModal({
     };
   }, [isOpen, onClose]);
 
+  // Reset form state when modal opens/closes
+  useEffect(() => {
+    if (!isOpen) {
+      reset();
+      setIsSuccess(false);
+      setIsError(false);
+      setErrorMessage("");
+    }
+  }, [isOpen, reset]);
+
   // Handle click outside to close
   const handleClickOutside = (e: React.MouseEvent) => {
     if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
@@ -47,26 +88,46 @@ export default function QuoteRequestModal({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: QuoteFormValues) => {
     setIsSubmitting(true);
+    setIsError(false);
+    setIsSuccess(false);
+    setErrorMessage("");
 
-    // Simulating form submission
-    setTimeout(() => {
-      // Reset form state
-      setName("");
-      setEmail("");
-      setPhone("");
-      setService("");
-      setMessage("");
+    try {
+      const response = await fetch("/api/quote-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || "Errore durante l'invio della richiesta"
+        );
+      }
+
+      console.log("Quote form submitted:", data);
+      setIsSuccess(true);
+
+      // Close modal after success message
+      setTimeout(() => {
+        reset();
+        onClose();
+      }, 2000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setIsError(true);
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Si è verificato un errore. Riprova più tardi."
+      );
+    } finally {
       setIsSubmitting(false);
-
-      // Close modal
-      onClose();
-
-      // Here you would typically submit to your actual backend
-      console.log({ name, email, phone, service, message });
-    }, 1000);
+    }
   };
 
   return (
@@ -112,7 +173,20 @@ export default function QuoteRequestModal({
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              {isSuccess && (
+                <div className="mb-4 p-3 bg-success-light text-success rounded-md">
+                  Richiesta inviata con successo!
+                </div>
+              )}
+
+              {isError && (
+                <div className="mb-4 p-3 bg-error-light text-error rounded-md">
+                  {errorMessage ||
+                    "Si è verificato un errore. Riprova più tardi."}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <div>
                   <label
                     htmlFor="name"
@@ -123,10 +197,14 @@ export default function QuoteRequestModal({
                   <input
                     type="text"
                     id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
+                    className={`w-full ${errors.name ? "border-error" : ""}`}
+                    {...register("name")}
                   />
+                  {errors.name && (
+                    <p className="mt-1 text-sm text-error">
+                      {errors.name.message}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -139,10 +217,14 @@ export default function QuoteRequestModal({
                   <input
                     type="email"
                     id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
+                    className={`w-full ${errors.email ? "border-error" : ""}`}
+                    {...register("email")}
                   />
+                  {errors.email && (
+                    <p className="mt-1 text-sm text-error">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -155,10 +237,14 @@ export default function QuoteRequestModal({
                   <input
                     type="tel"
                     id="phone"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    required
+                    className={`w-full ${errors.phone ? "border-error" : ""}`}
+                    {...register("phone")}
                   />
+                  {errors.phone && (
+                    <p className="mt-1 text-sm text-error">
+                      {errors.phone.message}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -170,16 +256,24 @@ export default function QuoteRequestModal({
                   </label>
                   <select
                     id="service"
-                    value={service}
-                    onChange={(e) => setService(e.target.value)}
-                    required
+                    className={`w-full ${errors.service ? "border-error" : ""}`}
+                    {...register("service")}
                   >
                     <option value="" disabled>
                       Servizio richiesto
                     </option>
                     <option value="Demolizione">Demolizione</option>
                     <option value="Strip-out">Strip-out</option>
+                    <option value="Movimento terra">Movimento terra</option>
+                    <option value="Rimozione amianto">Rimozione amianto</option>
+                    <option value="Gestione rifiuti">Gestione rifiuti</option>
+                    <option value="Altro">Altro</option>
                   </select>
+                  {errors.service && (
+                    <p className="mt-1 text-sm text-error">
+                      {errors.service.message}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -191,11 +285,15 @@ export default function QuoteRequestModal({
                   </label>
                   <textarea
                     id="message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
                     rows={4}
-                    required
+                    className={`w-full ${errors.message ? "border-error" : ""}`}
+                    {...register("message")}
                   />
+                  {errors.message && (
+                    <p className="mt-1 text-sm text-error">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
 
                 <button
