@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 // Define validation schema with zod
 const quoteFormSchema = z.object({
-  name: z.string().min(2, { message: "Nome troppo corto" }).max(50),
-  email: z.string().email({ message: "Email non valida" }),
+  name: z.string().min(2, { message: 'Nome troppo corto' }).max(50),
+  email: z.string().email({ message: 'Email non valida' }),
   phone: z
     .string()
-    .min(6, { message: "Numero di telefono non valido" })
+    .min(6, { message: 'Numero di telefono non valido' })
     .max(20),
-  service: z.string().min(1, { message: "Seleziona un servizio" }),
-  message: z.string().min(10, { message: "Messaggio troppo corto" }).max(500),
+  service: z.string().min(1, { message: 'Seleziona un servizio' }),
+  message: z.string().min(10, { message: 'Messaggio troppo corto' }).max(500),
 });
 
 // Type for our form values
@@ -33,7 +33,7 @@ export default function QuoteRequestModal({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const modalRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -44,30 +44,30 @@ export default function QuoteRequestModal({
   } = useForm<QuoteFormValues>({
     resolver: zodResolver(quoteFormSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
+      name: '',
+      email: '',
+      phone: '',
+      service: '',
+      message: '',
     },
   });
 
   // Handle ESC key press
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === 'Escape') onClose();
     };
 
     if (isOpen) {
-      window.addEventListener("keydown", handleEsc);
+      window.addEventListener('keydown', handleEsc);
       // Prevent scrolling when modal is open
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      window.removeEventListener("keydown", handleEsc);
+      window.removeEventListener('keydown', handleEsc);
       // Re-enable scrolling when modal is closed
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     };
   }, [isOpen, onClose]);
 
@@ -77,7 +77,7 @@ export default function QuoteRequestModal({
       reset();
       setIsSuccess(false);
       setIsError(false);
-      setErrorMessage("");
+      setErrorMessage('');
     }
   }, [isOpen, reset]);
 
@@ -92,12 +92,12 @@ export default function QuoteRequestModal({
     setIsSubmitting(true);
     setIsError(false);
     setIsSuccess(false);
-    setErrorMessage("");
+    setErrorMessage('');
 
     try {
-      const response = await fetch("/api/quote-request", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch('/api/quote-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
@@ -105,11 +105,11 @@ export default function QuoteRequestModal({
 
       if (!response.ok) {
         throw new Error(
-          result.message || "Errore durante l'invio della richiesta"
+          result.message || "Errore durante l'invio della richiesta",
         );
       }
 
-      console.log("Quote form submitted:", data);
+      console.log('Quote form submitted:', data);
       setIsSuccess(true);
 
       // Close modal after success message
@@ -118,12 +118,12 @@ export default function QuoteRequestModal({
         onClose();
       }, 2000);
     } catch (error) {
-      console.error("Form submission error:", error);
+      console.error('Form submission error:', error);
       setIsError(true);
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : "Si è verificato un errore. Riprova più tardi."
+          : 'Si è verificato un errore. Riprova più tardi.',
       );
     } finally {
       setIsSubmitting(false);
@@ -137,7 +137,7 @@ export default function QuoteRequestModal({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
           onClick={handleClickOutside}
         >
           <motion.div
@@ -145,16 +145,16 @@ export default function QuoteRequestModal({
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="card w-full max-w-lg"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-2 sm:p-4">
-              <div className="flex justify-between items-center mb-6">
+              <div className="mb-6 flex items-center justify-between">
                 <h2 className="text-2xl font-bold">Richiedi un preventivo</h2>
                 <button
                   onClick={onClose}
-                  className="text-text-secondary hover:text-foreground transition-colors"
+                  className="text-text-secondary transition-colors hover:text-foreground"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +162,7 @@ export default function QuoteRequestModal({
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="h-6 w-6"
                   >
                     <path
                       strokeLinecap="round"
@@ -174,15 +174,15 @@ export default function QuoteRequestModal({
               </div>
 
               {isSuccess && (
-                <div className="mb-4 p-3 bg-success-light text-success rounded-md">
+                <div className="mb-4 rounded-md bg-success-light p-3 text-success">
                   Richiesta inviata con successo!
                 </div>
               )}
 
               {isError && (
-                <div className="mb-4 p-3 bg-error-light text-error rounded-md">
+                <div className="mb-4 rounded-md bg-error-light p-3 text-error">
                   {errorMessage ||
-                    "Si è verificato un errore. Riprova più tardi."}
+                    'Si è verificato un errore. Riprova più tardi.'}
                 </div>
               )}
 
@@ -190,15 +190,15 @@ export default function QuoteRequestModal({
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium mb-1"
+                    className="mb-1 block text-sm font-medium"
                   >
                     Nome e Cognome
                   </label>
                   <input
                     type="text"
                     id="name"
-                    className={`w-full ${errors.name ? "border-error" : ""}`}
-                    {...register("name")}
+                    className={`w-full ${errors.name ? 'border-error' : ''}`}
+                    {...register('name')}
                   />
                   {errors.name && (
                     <p className="mt-1 text-sm text-error">
@@ -210,15 +210,15 @@ export default function QuoteRequestModal({
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium mb-1"
+                    className="mb-1 block text-sm font-medium"
                   >
                     Email
                   </label>
                   <input
                     type="email"
                     id="email"
-                    className={`w-full ${errors.email ? "border-error" : ""}`}
-                    {...register("email")}
+                    className={`w-full ${errors.email ? 'border-error' : ''}`}
+                    {...register('email')}
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-error">
@@ -230,15 +230,15 @@ export default function QuoteRequestModal({
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-sm font-medium mb-1"
+                    className="mb-1 block text-sm font-medium"
                   >
                     Numero di telefono
                   </label>
                   <input
                     type="tel"
                     id="phone"
-                    className={`w-full ${errors.phone ? "border-error" : ""}`}
-                    {...register("phone")}
+                    className={`w-full ${errors.phone ? 'border-error' : ''}`}
+                    {...register('phone')}
                   />
                   {errors.phone && (
                     <p className="mt-1 text-sm text-error">
@@ -250,14 +250,14 @@ export default function QuoteRequestModal({
                 <div>
                   <label
                     htmlFor="service"
-                    className="block text-sm font-medium mb-1"
+                    className="mb-1 block text-sm font-medium"
                   >
                     Servizi necessari
                   </label>
                   <select
                     id="service"
-                    className={`w-full ${errors.service ? "border-error" : ""}`}
-                    {...register("service")}
+                    className={`w-full ${errors.service ? 'border-error' : ''}`}
+                    {...register('service')}
                   >
                     <option value="" disabled>
                       Servizio richiesto
@@ -279,15 +279,15 @@ export default function QuoteRequestModal({
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium mb-1"
+                    className="mb-1 block text-sm font-medium"
                   >
                     Messaggio
                   </label>
                   <textarea
                     id="message"
                     rows={4}
-                    className={`w-full ${errors.message ? "border-error" : ""}`}
-                    {...register("message")}
+                    className={`w-full ${errors.message ? 'border-error' : ''}`}
+                    {...register('message')}
                   />
                   {errors.message && (
                     <p className="mt-1 text-sm text-error">
@@ -299,12 +299,12 @@ export default function QuoteRequestModal({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn btn-primary flex items-center justify-center"
+                  className="btn btn-primary flex w-full items-center justify-center"
                 >
                   {isSubmitting ? (
                     <>
                       <svg
-                        className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                        className="-ml-1 mr-2 h-4 w-4 animate-spin text-white"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -326,7 +326,7 @@ export default function QuoteRequestModal({
                       Invio in corso...
                     </>
                   ) : (
-                    "Invia richiesta"
+                    'Invia richiesta'
                   )}
                 </button>
               </form>
