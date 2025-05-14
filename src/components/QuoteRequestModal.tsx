@@ -264,9 +264,9 @@ export default function QuoteRequestModal({
                     </option>
                     <option value="Demolizione">Demolizione</option>
                     <option value="Strip-out">Strip-out</option>
-                    <option value="Movimento terra">Movimento terra</option>
-                    <option value="Rimozione amianto">Rimozione amianto</option>
-                    <option value="Gestione rifiuti">Gestione rifiuti</option>
+                    <option value="Bonifica ambientale">
+                      Bonifica ambientale
+                    </option>
                     <option value="Altro">Altro</option>
                   </select>
                   {errors.service && (

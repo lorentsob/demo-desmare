@@ -4,7 +4,6 @@ A modern website template for Desmare, designed with Next.js, TypeScript, and Ta
 
 ## Features
 
-- 🌙 Dark theme with vibrant accents
 - 🎨 Minimalist and elegant design
 - 📱 Fully responsive
 - ⚡ Optimized for high performance
