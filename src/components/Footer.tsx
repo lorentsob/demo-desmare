@@ -1,24 +1,29 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { useState } from "react";
-import QuoteRequestModal from "./QuoteRequestModal";
+import Link from 'next/link';
+import { useState } from 'react';
+import QuoteRequestModal from './QuoteRequestModal';
 
 export default function Footer() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <footer className="py-16 border-t border-white/10">
+    <footer
+      className="border-t border-white/10 py-16"
+      role="contentinfo"
+      aria-label="Informazioni di contatto e navigazione secondaria"
+    >
       <div className="container-custom">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-16">
+        <div className="mb-16 grid grid-cols-2 gap-8 md:grid-cols-5">
           <div className="col-span-2">
             <Link
               href="/"
-              className="text-2xl font-bold tracking-tight mb-6 inline-block"
+              className="mb-6 inline-block text-2xl font-bold tracking-tight"
+              aria-label="Desmare - Vai alla home page"
             >
               Desmare
             </Link>
-            <p className="text-text-secondary mt-4 max-w-xs">
+            <p className="mt-4 max-w-xs text-text-secondary">
               Soluzioni professionali per demolizioni, smaltimento e recupero
               materiali con attenzione alla sostenibilità.
             </p>
@@ -27,6 +32,8 @@ export default function Footer() {
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="btn btn-primary"
+                aria-label="Richiedi un preventivo"
+                aria-haspopup="dialog"
               >
                 Richiedi un preventivo
               </button>
@@ -34,64 +41,39 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-medium mb-4">Link utili</h4>
+            <h4 className="mb-4 font-medium" id="footer-link-utili">
+              Link utili
+            </h4>
 
             <Link
               href="/servizi#demolizioni"
-              className="text-text-secondary hover:text-foreground transition-colors"
+              className="text-text-secondary transition-colors hover:text-foreground"
+              aria-labelledby="footer-per-i-professionisti"
             >
-              <h4 className="font-medium mb-4">Per i professionisti</h4>
+              <h4 className="mb-4 font-medium" id="footer-per-i-professionisti">
+                Per i professionisti
+              </h4>
             </Link>
             <Link
               href="/"
-              className="text-text-secondary hover:text-foreground transition-colors"
+              className="text-text-secondary transition-colors hover:text-foreground"
+              aria-labelledby="footer-certificazioni"
             >
-              <h4 className="font-medium mb-4">Certificazioni</h4>
+              <h4 className="mb-4 font-medium" id="footer-certificazioni">
+                Certificazioni
+              </h4>
             </Link>
-
-            {/* <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/servizi#demolizioni"
-                  className="text-text-secondary hover:text-foreground transition-colors"
-                >
-                  Demolizioni
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servizi#smaltimento"
-                  className="text-text-secondary hover:text-foreground transition-colors"
-                >
-                  Smaltimento
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/servizi#recupero"
-                  className="text-text-secondary hover:text-foreground transition-colors"
-                >
-                  Recupero Rifiuti
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/progetti"
-                  className="text-text-secondary hover:text-foreground transition-colors"
-                >
-                  Progetti Realizzati
-                </Link>
-              </li>
-            </ul> */}
           </div>
 
           <div>
-            <h4 className="font-medium mb-4">Azienda</h4>
-            <ul className="space-y-3">
+            <h4 className="mb-4 font-medium" id="footer-azienda">
+              Azienda
+            </h4>
+            <ul className="space-y-3" aria-labelledby="footer-azienda">
               <li>
                 <Link
                   href="/chi-siamo"
-                  className="text-text-secondary hover:text-foreground transition-colors"
+                  className="text-text-secondary transition-colors hover:text-foreground"
                 >
                   Chi Siamo
                 </Link>
@@ -99,7 +81,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/gallery"
-                  className="text-text-secondary hover:text-foreground transition-colors"
+                  className="text-text-secondary transition-colors hover:text-foreground"
                 >
                   Gallery
                 </Link>
@@ -111,19 +93,23 @@ export default function Footer() {
           <div>
             <Link
               href="/contatti"
-              className="text-text-foreground hover:text-foreground transition-colors"
+              className="text-text-foreground transition-colors hover:text-foreground"
+              aria-labelledby="footer-contatti"
             >
-              <h4 className="font-medium mb-4">Contatti</h4>
+              <h4 className="mb-4 font-medium" id="footer-contatti">
+                Contatti
+              </h4>
             </Link>
 
-            <ul className="space-y-3">
+            <ul className="space-y-3" aria-labelledby="footer-contatti">
               <li className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-accent mr-2"
+                  className="mr-2 h-5 w-5 text-accent"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -134,7 +120,8 @@ export default function Footer() {
                 </svg>
                 <a
                   href="mailto:info@desmare.it"
-                  className="text-text-secondary hover:text-foreground transition-colors"
+                  className="text-text-secondary transition-colors hover:text-foreground"
+                  aria-label="Email: info@desmare.it"
                 >
                   info@desmare.it
                 </a>
@@ -142,10 +129,11 @@ export default function Footer() {
               <li className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-accent mr-2"
+                  className="mr-2 h-5 w-5 text-accent"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -156,65 +144,44 @@ export default function Footer() {
                 </svg>
                 <a
                   href="tel:+390123456789"
-                  className="text-text-secondary hover:text-foreground transition-colors"
+                  className="text-text-secondary transition-colors hover:text-foreground"
+                  aria-label="Telefono: +39 0123 456789"
                 >
                   +39 0123 456789
                 </a>
               </li>
-              {/* <li className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-accent mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-                <address className="text-text-secondary not-italic">
-                  Via Roma 123, 00100 Roma
-                </address>
-              </li> */}
             </ul>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:items-center justify-between pt-8 border-t border-white/10">
-          <div className="text-text-secondary text-sm">
-            © {new Date().getFullYear()} Desmare Srl. Tutti i diritti riservati.
+        <div className="flex flex-col justify-between border-t border-white/10 pt-8 md:flex-row md:items-center">
+          <div className="text-sm text-text-secondary">
+            © {new Date().getFullYear()} Desmare Srl. Tutti i diritti
+            riservati.
           </div>
 
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link
-              href="/termini-e-condizioni"
-              className="text-text-secondary hover:text-foreground transition-colors text-sm"
-            >
-              Termini e Condizioni
-            </Link>
-            <Link
-              href="/privacy"
-              className="text-text-secondary hover:text-foreground transition-colors text-sm"
-            >
-              Privacy
-            </Link>
-            <Link
-              href="/cookie"
-              className="text-text-secondary hover:text-foreground transition-colors text-sm"
-            >
-              Cookie
-            </Link>
-          </div>
+          <nav aria-label="Pagine legali">
+            <div className="mt-4 flex space-x-6 md:mt-0">
+              <Link
+                href="/termini-e-condizioni"
+                className="text-sm text-text-secondary transition-colors hover:text-foreground"
+              >
+                Termini e Condizioni
+              </Link>
+              <Link
+                href="/privacy"
+                className="text-sm text-text-secondary transition-colors hover:text-foreground"
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/cookie"
+                className="text-sm text-text-secondary transition-colors hover:text-foreground"
+              >
+                Cookie
+              </Link>
+            </div>
+          </nav>
         </div>
       </div>
 

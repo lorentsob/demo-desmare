@@ -2,9 +2,10 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useModal } from '../hooks/useModal';
 
 // Define validation schema with zod
 const quoteFormSchema = z.object({
@@ -35,6 +36,7 @@ export default function QuoteRequestModal({
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const modalRef = useRef<HTMLDivElement>(null);
+  const modalId = 'quote-request-modal';
 
   const {
     register,
@@ -52,41 +54,21 @@ export default function QuoteRequestModal({
     },
   });
 
-  // Handle ESC key press
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
+  // Reset all form states
+  const resetFormState = useCallback(() => {
+    reset();
+    setIsSuccess(false);
+    setIsError(false);
+    setErrorMessage('');
+  }, [reset]);
 
-    if (isOpen) {
-      window.addEventListener('keydown', handleEsc);
-      // Prevent scrolling when modal is open
-      document.body.style.overflow = 'hidden';
-    }
-
-    return () => {
-      window.removeEventListener('keydown', handleEsc);
-      // Re-enable scrolling when modal is closed
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen, onClose]);
-
-  // Reset form state when modal opens/closes
-  useEffect(() => {
-    if (!isOpen) {
-      reset();
-      setIsSuccess(false);
-      setIsError(false);
-      setErrorMessage('');
-    }
-  }, [isOpen, reset]);
-
-  // Handle click outside to close
-  const handleClickOutside = (e: React.MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-      onClose();
-    }
-  };
+  // Use the custom modal hook
+  const { handleClickOutside } = useModal({
+    isOpen,
+    onClose,
+    modalRef,
+    resetFn: resetFormState,
+  });
 
   const onSubmit = async (data: QuoteFormValues) => {
     setIsSubmitting(true);
@@ -139,6 +121,9 @@ export default function QuoteRequestModal({
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
           onClick={handleClickOutside}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={`${modalId}-title`}
         >
           <motion.div
             ref={modalRef}
@@ -151,10 +136,13 @@ export default function QuoteRequestModal({
           >
             <div className="p-2 sm:p-4">
               <div className="mb-6 flex items-center justify-between">
-                <h2 className="text-2xl font-bold">Richiedi un preventivo</h2>
+                <h2 id={`${modalId}-title`} className="text-2xl font-bold">
+                  Richiedi un preventivo
+                </h2>
                 <button
                   onClick={onClose}
-                  className="text-text-secondary transition-colors hover:text-foreground"
+                  className="text-text-secondary transition-colors hover:text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  aria-label="Chiudi modale"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -163,6 +151,7 @@ export default function QuoteRequestModal({
                     strokeWidth={1.5}
                     stroke="currentColor"
                     className="h-6 w-6"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -174,19 +163,30 @@ export default function QuoteRequestModal({
               </div>
 
               {isSuccess && (
-                <div className="mb-4 rounded-md bg-success-light p-3 text-success">
+                <div
+                  className="mb-4 rounded-md bg-success-light p-3 text-success"
+                  role="alert"
+                >
                   Richiesta inviata con successo!
                 </div>
               )}
 
               {isError && (
-                <div className="mb-4 rounded-md bg-error-light p-3 text-error">
+                <div
+                  className="mb-4 rounded-md bg-error-light p-3 text-error"
+                  role="alert"
+                >
                   {errorMessage ||
                     'Si è verificato un errore. Riprova più tardi.'}
                 </div>
               )}
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-5"
+                aria-labelledby={`${modalId}-title`}
+                noValidate
+              >
                 <div>
                   <label
                     htmlFor="name"
@@ -199,9 +199,15 @@ export default function QuoteRequestModal({
                     id="name"
                     className={`w-full ${errors.name ? 'border-error' : ''}`}
                     {...register('name')}
+                    aria-invalid={errors.name ? 'true' : 'false'}
+                    aria-describedby={errors.name ? 'name-error' : undefined}
                   />
                   {errors.name && (
-                    <p className="mt-1 text-sm text-error">
+                    <p
+                      id="name-error"
+                      className="mt-1 text-sm text-error"
+                      role="alert"
+                    >
                       {errors.name.message}
                     </p>
                   )}
@@ -219,9 +225,15 @@ export default function QuoteRequestModal({
                     id="email"
                     className={`w-full ${errors.email ? 'border-error' : ''}`}
                     {...register('email')}
+                    aria-invalid={errors.email ? 'true' : 'false'}
+                    aria-describedby={errors.email ? 'email-error' : undefined}
                   />
                   {errors.email && (
-                    <p className="mt-1 text-sm text-error">
+                    <p
+                      id="email-error"
+                      className="mt-1 text-sm text-error"
+                      role="alert"
+                    >
                       {errors.email.message}
                     </p>
                   )}
@@ -239,9 +251,15 @@ export default function QuoteRequestModal({
                     id="phone"
                     className={`w-full ${errors.phone ? 'border-error' : ''}`}
                     {...register('phone')}
+                    aria-invalid={errors.phone ? 'true' : 'false'}
+                    aria-describedby={errors.phone ? 'phone-error' : undefined}
                   />
                   {errors.phone && (
-                    <p className="mt-1 text-sm text-error">
+                    <p
+                      id="phone-error"
+                      className="mt-1 text-sm text-error"
+                      role="alert"
+                    >
                       {errors.phone.message}
                     </p>
                   )}
@@ -258,6 +276,10 @@ export default function QuoteRequestModal({
                     id="service"
                     className={`w-full ${errors.service ? 'border-error' : ''}`}
                     {...register('service')}
+                    aria-invalid={errors.service ? 'true' : 'false'}
+                    aria-describedby={
+                      errors.service ? 'service-error' : undefined
+                    }
                   >
                     <option value="" disabled>
                       Servizio richiesto
@@ -270,7 +292,11 @@ export default function QuoteRequestModal({
                     <option value="Altro">Altro</option>
                   </select>
                   {errors.service && (
-                    <p className="mt-1 text-sm text-error">
+                    <p
+                      id="service-error"
+                      className="mt-1 text-sm text-error"
+                      role="alert"
+                    >
                       {errors.service.message}
                     </p>
                   )}
@@ -288,9 +314,17 @@ export default function QuoteRequestModal({
                     rows={4}
                     className={`w-full ${errors.message ? 'border-error' : ''}`}
                     {...register('message')}
+                    aria-invalid={errors.message ? 'true' : 'false'}
+                    aria-describedby={
+                      errors.message ? 'message-error' : undefined
+                    }
                   />
                   {errors.message && (
-                    <p className="mt-1 text-sm text-error">
+                    <p
+                      id="message-error"
+                      className="mt-1 text-sm text-error"
+                      role="alert"
+                    >
                       {errors.message.message}
                     </p>
                   )}
@@ -300,6 +334,7 @@ export default function QuoteRequestModal({
                   type="submit"
                   disabled={isSubmitting}
                   className="btn btn-primary flex w-full items-center justify-center"
+                  aria-busy={isSubmitting}
                 >
                   {isSubmitting ? (
                     <>
@@ -308,6 +343,7 @@ export default function QuoteRequestModal({
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
+                        aria-hidden="true"
                       >
                         <circle
                           className="opacity-25"

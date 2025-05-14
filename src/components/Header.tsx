@@ -1,15 +1,17 @@
-"use client";
+'use client';
 
-import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import QuoteRequestModal from "./QuoteRequestModal";
+import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
+import { useCallback, useRef, useState } from 'react';
+import { useBodyScroll } from '../hooks/useBodyScroll';
+import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation';
+import QuoteRequestModal from './QuoteRequestModal';
 
 // Define service submenu items
 const serviceSubmenuItems = [
-  { name: "Demolizioni", href: "/servizi/demolizioni" },
-  { name: "Strip-out", href: "/servizi/strip-out" },
-  { name: "Rifiuti Pericolosi", href: "/servizi/rifiuti-pericolosi" },
+  { name: 'Demolizioni', href: '/servizi/demolizioni' },
+  { name: 'Strip-out', href: '/servizi/strip-out' },
+  { name: 'Rifiuti Pericolosi', href: '/servizi/rifiuti-pericolosi' },
 ];
 
 export default function Header() {
@@ -18,52 +20,86 @@ export default function Header() {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [mobileServicesExpanded, setMobileServicesExpanded] = useState(false);
 
+  // Refs for accessibility and event handling
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownMenuRef = useRef<HTMLDivElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
+  const mobileServicesButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setServicesDropdownOpen(false);
-      }
-    };
+  // Handle body scroll locking
+  useBodyScroll(mobileMenuOpen);
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+  // Handle close dropdown events
+  const closeServicesDropdown = useCallback(() => {
+    setServicesDropdownOpen(false);
   }, []);
 
-  // Prevent scrolling when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
+  // Open and close modal with consistent state management
+  const openQuoteModal = useCallback(() => {
+    setIsModalOpen(true);
+  }, []);
+
+  const closeQuoteModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
+
+  // Handle clicks outside dropdown - but don't use this for hover behavior
+  // useClickOutside(dropdownRef, closeServicesDropdown);
+
+  // Handle keyboard navigation for desktop dropdown
+  useKeyboardNavigation(
+    servicesDropdownOpen,
+    dropdownMenuRef,
+    closeServicesDropdown,
+  );
+
+  // Toggle the services dropdown with keyboard support
+  const toggleServicesDropdown = () => {
+    setServicesDropdownOpen(!servicesDropdownOpen);
+  };
+
+  // Handle dropdown keyboard events
+  const handleDropdownKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      setServicesDropdownOpen(true);
+      // Focus first menu item on next tick
+      setTimeout(() => {
+        const firstItem = dropdownMenuRef.current?.querySelector('a');
+        (firstItem as HTMLElement)?.focus();
+      }, 10);
     }
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [mobileMenuOpen]);
+  };
+
+  // Mobile menu toggle with keyboard support
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  // Toggle mobile services dropdown
+  const toggleMobileServices = () => {
+    setMobileServicesExpanded(!mobileServicesExpanded);
+  };
 
   return (
     <>
-      <header className="border-b border-white/10 sticky top-0 z-50 bg-background/85 backdrop-blur-lg">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-background/85 backdrop-blur-lg">
         <div className="container-custom">
-          <nav className="flex items-center justify-between py-6">
+          <nav
+            className="flex items-center justify-between py-6"
+            aria-label="Main Navigation"
+          >
             <div className="flex items-center">
               <Link href="/" className="text-2xl font-bold tracking-tight">
                 Desmare
               </Link>
             </div>
 
-            <div className="hidden md:flex items-center space-x-8">
+            {/* Desktop Navigation */}
+            <div className="hidden items-center space-x-8 md:flex">
               <Link
                 href="/chi-siamo"
-                className="text-text-secondary hover:text-foreground transition-colors"
+                className="text-text-secondary transition-colors hover:text-foreground"
               >
                 Chi Siamo
               </Link>
@@ -77,7 +113,11 @@ export default function Header() {
               >
                 <Link
                   href="/servizi"
-                  className="text-text-secondary hover:text-foreground transition-colors flex items-center gap-1"
+                  className="flex items-center gap-1 text-text-secondary transition-colors hover:text-foreground"
+                  onKeyDown={handleDropdownKeyDown}
+                  aria-expanded={servicesDropdownOpen}
+                  aria-haspopup="true"
+                  aria-controls="services-dropdown"
                 >
                   Servizi
                   <svg
@@ -91,8 +131,9 @@ export default function Header() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className={`transition-transform duration-200 ${
-                      servicesDropdownOpen ? "rotate-180" : ""
+                      servicesDropdownOpen ? 'rotate-180' : ''
                     }`}
+                    aria-hidden="true"
                   >
                     <path d="m6 9 6 6 6-6" />
                   </svg>
@@ -106,13 +147,23 @@ export default function Header() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                      className="absolute left-0 z-50 mt-2 w-48 rounded-md bg-white py-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      id="services-dropdown"
+                      ref={dropdownMenuRef}
+                      role="menu"
+                      aria-orientation="vertical"
+                      aria-labelledby="services-menu-button"
+                      onMouseEnter={() => setServicesDropdownOpen(true)}
+                      onMouseLeave={() => setServicesDropdownOpen(false)}
                     >
-                      {serviceSubmenuItems.map((item) => (
+                      {serviceSubmenuItems.map((item, index) => (
                         <Link
                           key={item.href}
                           href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent focus:bg-accent/10 focus:text-accent focus:outline-none"
+                          role="menuitem"
+                          onClick={closeServicesDropdown}
+                          tabIndex={0}
                         >
                           {item.name}
                         </Link>
@@ -124,19 +175,19 @@ export default function Header() {
 
               <Link
                 href="/progetti"
-                className="text-text-secondary hover:text-foreground transition-colors"
+                className="text-text-secondary transition-colors hover:text-foreground"
               >
                 Progetti
               </Link>
               <Link
                 href="/gallery"
-                className="text-text-secondary hover:text-foreground transition-colors"
+                className="text-text-secondary transition-colors hover:text-foreground"
               >
                 Gallery
               </Link>
               <Link
                 href="/contatti"
-                className="text-text-secondary hover:text-foreground transition-colors"
+                className="text-text-secondary transition-colors hover:text-foreground"
               >
                 Contatti
               </Link>
@@ -144,8 +195,10 @@ export default function Header() {
 
             <div className="hidden md:block">
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={openQuoteModal}
                 className="btn btn-primary"
+                aria-label="Richiedi un preventivo"
+                aria-haspopup="dialog"
               >
                 Richiedi un preventivo
               </button>
@@ -153,8 +206,10 @@ export default function Header() {
 
             <button
               className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
+              onClick={toggleMobileMenu}
+              aria-label={mobileMenuOpen ? 'Chiudi menu' : 'Apri menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -162,15 +217,16 @@ export default function Header() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-6 h-6"
+                className="h-6 w-6"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   d={
                     mobileMenuOpen
-                      ? "M6 18L18 6M6 6l12 12"
-                      : "M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"
+                      ? 'M6 18L18 6M6 6l12 12'
+                      : 'M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5'
                   }
                 />
               </svg>
@@ -186,13 +242,17 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 md:hidden z-40 bg-background/60 backdrop-blur-md"
+            className="fixed inset-0 z-40 bg-background/60 backdrop-blur-md md:hidden"
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
           >
             {/* Keep the original header visible and just add close button */}
-            <div className="container-custom border-b border-white/10 py-6 flex justify-end">
+            <div className="container-custom flex justify-end border-b border-white/10 py-6">
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="focus:outline-none"
+                className="focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
                 aria-label="Close menu"
               >
                 <svg
@@ -201,7 +261,8 @@ export default function Header() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="h-6 w-6"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -214,29 +275,33 @@ export default function Header() {
 
             {/* Mobile menu content */}
             <div className="container-custom overflow-y-auto">
-              <nav className="flex flex-col space-y-5 py-8">
+              <nav
+                className="flex flex-col space-y-5 py-8"
+                aria-label="Mobile Navigation"
+              >
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium hover:text-accent transition-colors"
+                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
                 >
                   Home
                 </Link>
                 <Link
                   href="/chi-siamo"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium hover:text-accent transition-colors"
+                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
                 >
                   Chi Siamo
                 </Link>
 
                 {/* Services dropdown for mobile */}
-                <div className="space-y-2 w-full">
+                <div className="w-full space-y-2" ref={mobileDropdownRef}>
                   <button
-                    className="flex justify-between items-center w-full text-left text-lg font-medium hover:text-accent transition-colors"
-                    onClick={() =>
-                      setMobileServicesExpanded(!mobileServicesExpanded)
-                    }
+                    ref={mobileServicesButtonRef}
+                    className="flex w-full items-center justify-between text-left text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
+                    onClick={toggleMobileServices}
+                    aria-expanded={mobileServicesExpanded}
+                    aria-controls="mobile-services-dropdown"
                   >
                     <span>Servizi</span>
                     <svg
@@ -250,8 +315,9 @@ export default function Header() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       className={`transition-transform duration-200 ${
-                        mobileServicesExpanded ? "rotate-180" : ""
+                        mobileServicesExpanded ? 'rotate-180' : ''
                       }`}
+                      aria-hidden="true"
                     >
                       <path d="m6 9 6 6 6-6" />
                     </svg>
@@ -261,24 +327,19 @@ export default function Header() {
                     {mobileServicesExpanded && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
+                        animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="pl-4 space-y-3 overflow-hidden"
+                        className="space-y-3 overflow-hidden pl-4"
+                        id="mobile-services-dropdown"
+                        role="region"
                       >
-                        <Link
-                          href="/servizi"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="block text-lg text-text-secondary hover:text-accent transition-colors"
-                        >
-                          Tutti i servizi
-                        </Link>
                         {serviceSubmenuItems.map((item) => (
                           <Link
                             key={item.href}
                             href={item.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block text-lg text-text-secondary hover:text-accent transition-colors"
+                            className="block text-lg text-text-secondary transition-colors hover:text-accent focus:text-accent focus:outline-none"
                           >
                             {item.name}
                           </Link>
@@ -291,32 +352,33 @@ export default function Header() {
                 <Link
                   href="/progetti"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium hover:text-accent transition-colors"
+                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
                 >
                   Progetti
                 </Link>
                 <Link
                   href="/gallery"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium hover:text-accent transition-colors"
+                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
                 >
                   Gallery
                 </Link>
                 <Link
                   href="/contatti"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium hover:text-accent transition-colors"
+                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
                 >
                   Contatti
                 </Link>
 
-                <div className="pt-4 w-full max-w-xs">
+                <div className="w-full max-w-xs pt-4">
                   <button
                     onClick={() => {
                       setMobileMenuOpen(false);
-                      setIsModalOpen(true);
+                      openQuoteModal();
                     }}
-                    className="btn btn-primary w-full text-center py-3"
+                    className="btn btn-primary w-full py-3 text-center"
+                    aria-haspopup="dialog"
                   >
                     Richiedi un preventivo
                   </button>
@@ -327,10 +389,7 @@ export default function Header() {
         )}
       </AnimatePresence>
 
-      <QuoteRequestModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      <QuoteRequestModal isOpen={isModalOpen} onClose={closeQuoteModal} />
     </>
   );
 }
