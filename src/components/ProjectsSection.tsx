@@ -61,8 +61,8 @@ export default function ProjectsSection() {
             onClick={() => setFilter('all')}
             className={`px-6 py-3 rounded-full text-lg transition-colors ${
               filter === 'all'
-                ? 'bg-accent text-white'
-                : 'bg-accent/10 hover:bg-accent/20'
+                ? 'bg-primary text-white'
+                : 'bg-primary/10 hover:bg-primary/20'
             }`}
           >
             Tutti
@@ -71,8 +71,8 @@ export default function ProjectsSection() {
             onClick={() => setFilter('demolizione')}
             className={`px-6 py-3 rounded-full text-lg transition-colors ${
               filter === 'demolizione'
-                ? 'bg-accent text-white'
-                : 'bg-accent/10 hover:bg-accent/20'
+                ? 'bg-primary text-white'
+                : 'bg-primary/10 hover:bg-primary/20'
             }`}
           >
             Demolizioni
@@ -81,8 +81,8 @@ export default function ProjectsSection() {
             onClick={() => setFilter('smaltimento')}
             className={`px-6 py-3 rounded-full text-lg transition-colors ${
               filter === 'smaltimento'
-                ? 'bg-accent text-white'
-                : 'bg-accent/10 hover:bg-accent/20'
+                ? 'bg-primary text-white'
+                : 'bg-primary/10 hover:bg-primary/20'
             }`}
           >
             Smaltimento
@@ -91,8 +91,8 @@ export default function ProjectsSection() {
             onClick={() => setFilter('recupero')}
             className={`px-6 py-3 rounded-full text-lg transition-colors ${
               filter === 'recupero'
-                ? 'bg-accent text-white'
-                : 'bg-accent/10 hover:bg-accent/20'
+                ? 'bg-primary text-white'
+                : 'bg-primary/10 hover:bg-primary/20'
             }`}
           >
             Recupero
@@ -103,7 +103,7 @@ export default function ProjectsSection() {
           {filteredProjects.map((project) => (
             <div 
               key={project.id}
-              className="bg-accent/5 rounded-xl overflow-hidden transition-transform hover:shadow-xl hover:-translate-y-1"
+              className="bg-primary/5 rounded-xl overflow-hidden transition-transform hover:shadow-xl hover:-translate-y-1"
             >
               <div className="relative h-64">
                 <Image 
@@ -116,7 +116,7 @@ export default function ProjectsSection() {
               <div className="p-6">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl font-bold">{project.title}</h3>
-                  <span className="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm">
+                  <span className="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">
                     {project.category === 'demolizione' ? 'Demolizione' :
                      project.category === 'smaltimento' ? 'Smaltimento' : 'Recupero'}
                   </span>
@@ -130,7 +130,7 @@ export default function ProjectsSection() {
                   </span>
                   <button
                     onClick={() => setActiveProject(project.id)}
-                    className="text-accent hover:underline text-sm font-medium"
+                    className="text-primary hover:underline text-sm font-medium"
                   >
                     Dettagli
                   </button>

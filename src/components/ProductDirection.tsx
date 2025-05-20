@@ -35,7 +35,7 @@ export default function ProductDirection() {
             </div>
             
             <div className="bg-card-bg border border-border rounded-xl overflow-hidden">
-              <div className="w-full h-64 bg-gradient-to-br from-accent/20 to-purple-500/20 flex items-center justify-center">
+              <div className="w-full h-64 bg-gradient-to-br from-primary/20 to-purple-500/20 flex items-center justify-center">
                 <p className="text-foreground font-medium">Product Roadmap</p>
               </div>
             </div>
@@ -55,7 +55,7 @@ export default function ProductDirection() {
             </div>
             
             <div className="bg-card-bg border border-border rounded-xl overflow-hidden">
-              <div className="w-full h-64 bg-gradient-to-br from-purple-500/20 to-accent/20 flex items-center justify-center">
+              <div className="w-full h-64 bg-gradient-to-br from-purple-500/20 to-primary/20 flex items-center justify-center">
                 <p className="text-foreground font-medium">Project Archives</p>
               </div>
             </div>

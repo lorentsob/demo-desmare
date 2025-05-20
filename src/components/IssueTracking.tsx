@@ -41,7 +41,7 @@ export default function IssueTracking() {
             </div>
 
             <div className="overflow-hidden rounded-xl border border-border bg-card-bg">
-              <div className="flex h-64 w-full items-center justify-center bg-gradient-to-br from-accent/20 to-emerald-500/20">
+              <div className="flex h-64 w-full items-center justify-center bg-gradient-to-br from-primary/20 to-emerald-500/20">
                 <p className="font-medium text-foreground">
                   GitHub Integration
                 </p>
@@ -67,7 +67,7 @@ export default function IssueTracking() {
             </div>
 
             <div className="overflow-hidden rounded-xl border border-border bg-card-bg">
-              <div className="flex h-64 w-full items-center justify-center bg-gradient-to-br from-purple-500/20 to-accent/20">
+              <div className="flex h-64 w-full items-center justify-center bg-gradient-to-br from-purple-500/20 to-primary/20">
                 <p className="font-medium text-foreground">Triage Workflow</p>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function IssueTracking() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="overflow-hidden rounded-xl border border-border bg-card-bg"
         >
-          <div className="flex h-96 w-full items-center justify-center bg-gradient-to-br from-accent/10 via-purple-500/10 to-emerald-500/10 p-10">
+          <div className="flex h-96 w-full items-center justify-center bg-gradient-to-br from-primary/10 via-purple-500/10 to-emerald-500/10 p-10">
             <div className="text-center">
               <p className="mb-2 font-medium text-foreground">
                 Issue Analytics
@@ -102,7 +102,7 @@ export default function IssueTracking() {
           className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4"
         >
           <div className="rounded-xl border border-border bg-card-bg p-5">
-            <div className="mb-2 text-accent">
+            <div className="mb-2 text-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -122,7 +122,7 @@ export default function IssueTracking() {
           </div>
 
           <div className="rounded-xl border border-border bg-card-bg p-5">
-            <div className="mb-2 text-accent">
+            <div className="mb-2 text-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -142,7 +142,7 @@ export default function IssueTracking() {
           </div>
 
           <div className="rounded-xl border border-border bg-card-bg p-5">
-            <div className="mb-2 text-accent">
+            <div className="mb-2 text-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -162,7 +162,7 @@ export default function IssueTracking() {
           </div>
 
           <div className="rounded-xl border border-border bg-card-bg p-5">
-            <div className="mb-2 text-accent">
+            <div className="mb-2 text-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

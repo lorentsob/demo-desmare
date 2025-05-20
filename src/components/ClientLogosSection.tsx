@@ -34,7 +34,7 @@ export default function ClientLogosSection() {
         >
           {clients.map((client) => (
             <div key={client.name} className="opacity-60 hover:opacity-100 transition-opacity">
-              <div className="h-12 px-6 bg-accent/5 border border-white/10 rounded-md flex items-center justify-center">
+              <div className="h-12 px-6 bg-primary/5 border border-white/10 rounded-md flex items-center justify-center">
                 {client.name}
               </div>
             </div>

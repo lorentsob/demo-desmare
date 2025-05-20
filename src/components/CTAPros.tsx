@@ -16,7 +16,7 @@ export default function CTAPros() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-accent to-accent/70 p-8 md:p-16"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary/70 p-8 md:p-16"
         >
           <div className="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 rounded-full bg-white/10 blur-3xl"></div>
           <div className="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 rounded-full bg-white/10 blur-3xl"></div>
@@ -35,7 +35,7 @@ export default function CTAPros() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 // onClick={() => setIsModalOpen(true)}
-                className="btn px-8 py-3 text-lg bg-white text-accent hover:bg-white/90 transition-colors font-medium"
+                className="btn px-8 py-3 text-lg bg-white text-primary hover:bg-white/90 transition-colors font-medium"
               >
                 <a href="mailto:info@desmare.it">
                   Contattaci per sapene di più

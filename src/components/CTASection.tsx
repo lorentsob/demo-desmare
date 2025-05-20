@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import QuoteRequestModal from "./QuoteRequestModal";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { useState } from 'react';
+import QuoteRequestModal from './QuoteRequestModal';
 
 export default function CTASection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,31 +16,31 @@ export default function CTASection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl bg-gradient-accent p-8 md:p-16 shadow-section"
+          className="relative overflow-hidden rounded-3xl bg-gradient-primary p-8 shadow-section md:p-16"
         >
-          <div className="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 rounded-full bg-white/10 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 -mb-16 -ml-16 w-64 h-64 rounded-full bg-white/10 blur-3xl"></div>
+          <div className="absolute right-0 top-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 -mb-16 -ml-16 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
 
-          <div className="relative z-10 max-w-3xl mx-auto text-center">
-            <h2 className="section-title text-white mb-6">
+          <div className="relative z-10 mx-auto max-w-3xl text-center">
+            <h2 className="section-title mb-6 text-white">
               Hai un progetto in mente?
             </h2>
-            <p className="text-white/90 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-white/90 md:text-xl">
               Contattaci oggi per una consulenza gratuita e scopri come Desmare
               può offrirti soluzioni sicure, efficienti e sostenibili per le tue
               esigenze di demolizione e recupero materiali.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="btn px-8 py-3 text-lg bg-white text-accent hover:bg-white/90 transition-colors font-medium"
+                className="btn bg-white px-8 py-3 text-lg font-medium text-primary transition-colors hover:bg-white/90"
               >
                 Richiedi un preventivo
               </button>
               <Link
                 href="/contatti"
-                className="btn px-8 py-3 text-lg border border-white/30 text-white hover:bg-white/10 transition-colors"
+                className="btn border border-white/30 px-8 py-3 text-lg text-white transition-colors hover:bg-white/10"
               >
                 Contattaci
               </Link>

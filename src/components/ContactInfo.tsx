@@ -61,7 +61,7 @@ export default function ContacInfo() {
                 <h3 className="text-lg font-medium mb-1">Email</h3>
                 <a
                   href="mailto:info@desmare.it"
-                  className="text-accent hover:underline"
+                  className="text-primary hover:underline"
                 >
                   info@desmare.it
                 </a>
@@ -89,7 +89,7 @@ export default function ContacInfo() {
                 <h3 className="text-lg font-medium mb-1">Telefono</h3>
                 <a
                   href="tel:+390123456789"
-                  className="text-accent hover:underline"
+                  className="text-primary hover:underline"
                 >
                   +39 0123 456789
                 </a>

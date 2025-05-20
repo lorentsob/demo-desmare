@@ -49,7 +49,7 @@ export default function ProjectsPreview() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid md:grid-cols-5 gap-8 bg-accent/5 rounded-xl overflow-hidden mb-12"
+          className="grid md:grid-cols-5 gap-8 bg-primary/5 rounded-xl overflow-hidden mb-12"
         >
           <div className="md:col-span-2 relative h-64 md:h-auto">
             <Image 
@@ -63,7 +63,7 @@ export default function ProjectsPreview() {
           <div className="md:col-span-3 p-8">
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-2xl font-bold">{featuredProject.title}</h3>
-              <span className="bg-accent/20 text-accent px-3 py-1 rounded-full text-sm">
+              <span className="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">
                 {featuredProject.category === 'demolizione' ? 'Demolizione' :
                  featuredProject.category === 'smaltimento' ? 'Smaltimento' : 'Recupero'}
               </span>
@@ -84,7 +84,7 @@ export default function ProjectsPreview() {
             
             <div className="flex items-center text-sm text-text-secondary mb-6">
               <span className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-accent mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-1" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
                 {featuredProject.location}

@@ -59,7 +59,7 @@ export default function Features() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-card-bg border border-border rounded-xl p-6 hover:translate-y-[-4px] transition-transform"
             >
-              <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-5">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-5">
                 <span className="text-xl">{feature.icon}</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>

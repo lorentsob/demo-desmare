@@ -44,7 +44,7 @@ export default function TestimonialsSection() {
   }
 
   return (
-    <section className="py-20 bg-accent/5">
+    <section className="py-20 bg-primary/5">
       <div className="container-custom">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <motion.h2 
@@ -78,7 +78,7 @@ export default function TestimonialsSection() {
           >
             <div className="grid md:grid-cols-5 gap-8">
               <div className="md:col-span-3">
-                <svg className="w-10 h-10 text-accent mb-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 text-primary mb-6" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
                 <p className="text-xl mb-6 leading-relaxed">
@@ -104,7 +104,7 @@ export default function TestimonialsSection() {
           <div className="flex justify-between mt-8">
             <button 
               onClick={prevTestimonial}
-              className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 transition-colors"
+              className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
               aria-label="Testimonianza precedente"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -118,7 +118,7 @@ export default function TestimonialsSection() {
                   key={testimonial.id}
                   onClick={() => goToTestimonial(index)}
                   className={`w-3 h-3 rounded-full ${
-                    index === activeIndex ? 'bg-accent' : 'bg-accent/20'
+                    index === activeIndex ? 'bg-primary' : 'bg-primary/20'
                   }`}
                   aria-label={`Vai alla testimonianza ${index + 1}`}
                 />
@@ -127,7 +127,7 @@ export default function TestimonialsSection() {
             
             <button 
               onClick={nextTestimonial}
-              className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 transition-colors"
+              className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors"
               aria-label="Testimonianza successiva"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">

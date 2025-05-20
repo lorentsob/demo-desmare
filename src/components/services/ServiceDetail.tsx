@@ -58,7 +58,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-accent"
+            className="h-8 w-8 text-primary"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -75,7 +75,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-accent"
+            className="h-8 w-8 text-primary"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -92,7 +92,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-accent"
+            className="h-8 w-8 text-primary"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -109,7 +109,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-accent"
+            className="h-8 w-8 text-primary"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -126,7 +126,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-accent"
+            className="h-8 w-8 text-primary"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -156,7 +156,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 {service.title}
               </h1>
-              <p className="text-xl text-accent mb-6">{service.subtitle}</p>
+              <p className="text-xl text-primary mb-6">{service.subtitle}</p>
               <p className="text-lg text-text-secondary mb-8">
                 {service.description}
               </p>
@@ -204,7 +204,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="bg-white rounded-xl p-6 shadow-md border border-border"
               >
-                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   {renderIcon(benefit.icon)}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
@@ -227,7 +227,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           </h2>
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-[15px] md:left-1/2 transform md:-translate-x-px top-0 h-full w-[2px] bg-accent/20"></div>
+            <div className="absolute left-[15px] md:left-1/2 transform md:-translate-x-px top-0 h-full w-[2px] bg-primary/20"></div>
 
             <div className="space-y-12">
               {service.process.map((step, index) => (
@@ -236,7 +236,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                   className="relative grid md:grid-cols-2 gap-8 items-center"
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white font-bold z-10">
+                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold z-10">
                     {step.step}
                   </div>
 
@@ -306,7 +306,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-24 bg-accent/5 rounded-2xl p-8 md:p-12"
+          className="mb-24 bg-primary/5 rounded-2xl p-8 md:p-12"
         >
           <h2 className="text-3xl font-bold mb-10 text-center">
             Certificazioni e autorizzazioni
@@ -323,7 +323,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-accent mr-3"
+                  className="h-6 w-6 text-primary mr-3"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

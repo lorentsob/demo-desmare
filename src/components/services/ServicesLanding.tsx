@@ -127,7 +127,7 @@ export default function ServicesLanding() {
                     <li key={idx} className="flex items-start">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-accent mr-3 flex-shrink-0 mt-0.5"
+                        className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-0.5"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -166,7 +166,7 @@ export default function ServicesLanding() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-accent/5 rounded-2xl p-8 md:p-12 text-center mb-16"
+          className="bg-primary/5 rounded-2xl p-8 md:p-12 text-center mb-16"
         >
           <h2 className="text-3xl font-bold mb-6">Perché scegliere Desmare?</h2>
           <p className="text-lg text-text-secondary mb-10 max-w-3xl mx-auto">
@@ -177,10 +177,10 @@ export default function ServicesLanding() {
 
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-accent"
+                  className="h-8 w-8 text-primary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -200,10 +200,10 @@ export default function ServicesLanding() {
             </div>
 
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-accent"
+                  className="h-8 w-8 text-primary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -224,10 +224,10 @@ export default function ServicesLanding() {
             </div>
 
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-accent"
+                  className="h-8 w-8 text-primary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -248,10 +248,10 @@ export default function ServicesLanding() {
             </div>
 
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-accent"
+                  className="h-8 w-8 text-primary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

@@ -61,6 +61,17 @@ module.exports = {
         background: '#FFFFFF', // Main background color
         foreground: '#1A2634', // Main text color
 
+        // Construction page theme
+        construction: {
+          bg: '#F8F9FA',
+          text: '#1A2634',
+          'text-secondary': 'rgba(26, 38, 52, 0.75)',
+          'text-light': '#F8F9FA',
+          accent: '#08A045', // Updated to match primary
+          border: 'rgba(26, 38, 52, 0.08)',
+          'accent-transparent': 'rgba(8, 160, 69, 0.08)', // Updated to match primary
+        },
+
         bg: {
           DEFAULT: '#FFFFFF', // Main background
           light: '#F8F9FA', // Light gray background for section differentiation
@@ -81,7 +92,7 @@ module.exports = {
         // Status colors - For notifications and alerts
         status: {
           success: '#08A045', // Success messages (matches primary)
-          warning: '#FF9505', // Warning messages (matches accent)
+          warning: '#FF9505', // Warning messages (uses accent-color)
           error: '#D32F2F', // Error messages
           info: '#2196F3', // Information messages (matches secondary)
         },
@@ -111,7 +122,7 @@ module.exports = {
         'gradient-primary': 'linear-gradient(135deg, #08A045 0%, #067F38 100%)', // Updated to use primary color
         'gradient-primary-light':
           'linear-gradient(135deg, rgba(8, 160, 69, 0.1) 0%, rgba(6, 127, 56, 0.05) 100%)', // Updated to use primary color
-        'gradient-accent': 'linear-gradient(135deg, #FF9505 0%, #E07A00 100%)', // Added accent gradient
+        'gradient-accent-color': 'linear-gradient(135deg, #FF9505 0%, #E07A00 100%)', // Renamed to keep the gradient but not have it used by default
       },
     },
   },

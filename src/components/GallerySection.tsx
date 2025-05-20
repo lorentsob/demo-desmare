@@ -117,8 +117,8 @@ export default function GallerySection() {
             onClick={() => setFilter('all')}
             className={`px-6 py-3 rounded-full text-lg transition-colors ${
               filter === 'all'
-                ? 'bg-accent text-white'
-                : 'bg-accent/10 hover:bg-accent/20'
+                ? 'bg-primary text-white'
+                : 'bg-primary/10 hover:bg-primary/20'
             }`}
           >
             Tutti
@@ -127,8 +127,8 @@ export default function GallerySection() {
             onClick={() => setFilter('demolizioni')}
             className={`px-6 py-3 rounded-full text-lg transition-colors ${
               filter === 'demolizioni'
-                ? 'bg-accent text-white'
-                : 'bg-accent/10 hover:bg-accent/20'
+                ? 'bg-primary text-white'
+                : 'bg-primary/10 hover:bg-primary/20'
             }`}
           >
             Demolizioni
@@ -137,8 +137,8 @@ export default function GallerySection() {
             onClick={() => setFilter('smaltimento')}
             className={`px-6 py-3 rounded-full text-lg transition-colors ${
               filter === 'smaltimento'
-                ? 'bg-accent text-white'
-                : 'bg-accent/10 hover:bg-accent/20'
+                ? 'bg-primary text-white'
+                : 'bg-primary/10 hover:bg-primary/20'
             }`}
           >
             Smaltimento
@@ -147,8 +147,8 @@ export default function GallerySection() {
             onClick={() => setFilter('recupero')}
             className={`px-6 py-3 rounded-full text-lg transition-colors ${
               filter === 'recupero'
-                ? 'bg-accent text-white'
-                : 'bg-accent/10 hover:bg-accent/20'
+                ? 'bg-primary text-white'
+                : 'bg-primary/10 hover:bg-primary/20'
             }`}
           >
             Recupero
@@ -197,7 +197,7 @@ export default function GallerySection() {
           tabIndex={0}
         >
           <button 
-            className="absolute top-4 right-4 text-white hover:text-accent p-2 transition-colors"
+            className="absolute top-4 right-4 text-white hover:text-primary p-2 transition-colors"
             onClick={closeLightbox}
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
@@ -206,7 +206,7 @@ export default function GallerySection() {
           </button>
           
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent p-2 transition-colors"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary p-2 transition-colors"
             onClick={(e) => {
               e.stopPropagation()
               prevImage()
@@ -239,7 +239,7 @@ export default function GallerySection() {
           </div>
           
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent p-2 transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary p-2 transition-colors"
             onClick={(e) => {
               e.stopPropagation()
               nextImage()

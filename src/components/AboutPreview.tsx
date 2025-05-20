@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function AboutPreview() {
   return (
-    <section className="py-20 bg-accent/5">
+    <section className="py-20 bg-primary/5">
       <div className="container-custom">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -51,8 +51,8 @@ export default function AboutPreview() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-5 -right-5 w-40 h-40 bg-accent/10 rounded-full blur-2xl -z-10"></div>
-            <div className="absolute -top-5 -left-5 w-40 h-40 bg-accent/10 rounded-full blur-2xl -z-10"></div>
+            <div className="absolute -bottom-5 -right-5 w-40 h-40 bg-primary/10 rounded-full blur-2xl -z-10"></div>
+            <div className="absolute -top-5 -left-5 w-40 h-40 bg-primary/10 rounded-full blur-2xl -z-10"></div>
           </motion.div>
         </div>
       </div>
