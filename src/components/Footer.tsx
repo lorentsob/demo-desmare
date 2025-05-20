@@ -1,15 +1,17 @@
 'use client';
 
+import { useSiteConfig } from '@/hooks/useSiteConfig';
 import Link from 'next/link';
 import { useState } from 'react';
 import QuoteRequestModal from './QuoteRequestModal';
 
 export default function Footer() {
+  const { contact } = useSiteConfig();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <footer
-      className="border-t border-white/10 py-16"
+      className="border-t border-white/10 py-8"
       role="contentinfo"
       aria-label="Informazioni di contatto e navigazione secondaria"
     >
@@ -41,28 +43,28 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-medium" id="footer-link-utili">
+            <h4 className="mb-4 font-medium" id="footer-azienda">
               Link utili
             </h4>
-
-            <Link
-              href="/servizi#demolizioni"
-              className="text-text-secondary transition-colors hover:text-text"
-              aria-labelledby="footer-per-i-professionisti"
-            >
-              <h4 className="mb-4 font-medium" id="footer-per-i-professionisti">
-                Per i professionisti
-              </h4>
-            </Link>
-            <Link
-              href="/"
-              className="text-text-secondary transition-colors hover:text-text"
-              aria-labelledby="footer-certificazioni"
-            >
-              <h4 className="mb-4 font-medium" id="footer-certificazioni">
-                Certificazioni
-              </h4>
-            </Link>
+            <ul className="space-y-3" aria-labelledby="footer-azienda">
+              <li>
+                <Link
+                  href="/collabora"
+                  className="text-text-secondary transition-colors hover:text-text"
+                >
+                  Collabora con noi
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/servizi"
+                  className="text-text-secondary transition-colors hover:text-text"
+                >
+                  Certificazioni
+                </Link>
+              </li>
+              <li></li>
+            </ul>
           </div>
 
           <div>
@@ -80,10 +82,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/gallery"
+                  href="/servizi"
                   className="text-text-secondary transition-colors hover:text-text"
                 >
-                  Gallery
+                  Servizi
                 </Link>
               </li>
               <li></li>
@@ -119,11 +121,11 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="mailto:info@desmare.it"
+                  href={`mailto:${contact.email}`}
                   className="text-text-secondary transition-colors hover:text-text"
-                  aria-label="Email: info@desmare.it"
+                  aria-label={`Email: ${contact.email}`}
                 >
-                  info@desmare.it
+                  {contact.email}
                 </a>
               </li>
               <li className="flex items-center">
@@ -143,11 +145,11 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="tel:+390123456789"
+                  href={`tel:${contact.phone}`}
                   className="text-text-secondary transition-colors hover:text-text"
-                  aria-label="Telefono: +39 0123 456789"
+                  aria-label={`Telefono: ${contact.phone}`}
                 >
-                  +39 0123 456789
+                  {contact.phone}
                 </a>
               </li>
             </ul>
@@ -157,10 +159,18 @@ export default function Footer() {
         <div className="flex flex-col justify-between border-t border-white/10 pt-8 md:flex-row md:items-center">
           <div className="text-sm text-text-secondary">
             © {new Date().getFullYear()} Desmare Srl. Tutti i diritti
-            riservati.
+            riservati. <br /> {`${contact.address}`}, P.IVA: {`${contact.piva}`}
+            , R.E.A.: {`${contact.rea}`} <br /> Capitale Sociale:{' '}
+            {`${contact.capitaleSociale}`}, PEC:{' '}
+            <a
+              href={`mailto:${contact.pec}`}
+              className="text-text-secondary transition-colors hover:text-primary"
+            >
+              {`${contact.pec}`}
+            </a>
           </div>
 
-          <nav aria-label="Pagine legali">
+          <nav aria-label="Pagine legali" className="flex items-center">
             <div className="mt-4 flex space-x-6 md:mt-0">
               <Link
                 href="/termini-e-condizioni"

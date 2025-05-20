@@ -96,101 +96,97 @@ export default function Header() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden items-center space-x-8 md:flex">
-              <Link
-                href="/chi-siamo"
-                className="hover:text-text text-text-secondary transition-colors"
-              >
-                Chi Siamo
-              </Link>
-
-              {/* Services dropdown for desktop */}
-              <div
-                className="relative"
-                ref={dropdownRef}
-                onMouseEnter={() => setServicesDropdownOpen(true)}
-                onMouseLeave={() => setServicesDropdownOpen(false)}
-              >
+            <div className="hidden flex-1 items-center justify-center md:flex">
+              <div className="flex items-center space-x-12">
                 <Link
-                  href="/servizi"
-                  className="hover:text-text flex items-center gap-1 text-text-secondary transition-colors"
-                  onKeyDown={handleDropdownKeyDown}
-                  aria-expanded={servicesDropdownOpen}
-                  aria-haspopup="true"
-                  aria-controls="services-dropdown"
+                  href="/chi-siamo"
+                  className="text-text-secondary transition-colors hover:text-text"
                 >
-                  Servizi
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className={`transition-transform duration-200 ${
-                      servicesDropdownOpen ? 'rotate-180' : ''
-                    }`}
-                    aria-hidden="true"
-                  >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
+                  Chi Siamo
                 </Link>
 
-                {/* Dropdown menu */}
-                <AnimatePresence>
-                  {servicesDropdownOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute left-0 z-50 mt-2 w-48 rounded-md bg-white py-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                      id="services-dropdown"
-                      ref={dropdownMenuRef}
-                      role="menu"
-                      aria-orientation="vertical"
-                      aria-labelledby="services-menu-button"
-                      onMouseEnter={() => setServicesDropdownOpen(true)}
-                      onMouseLeave={() => setServicesDropdownOpen(false)}
+                {/* Services dropdown for desktop */}
+                <div
+                  className="relative"
+                  ref={dropdownRef}
+                  onMouseEnter={() => setServicesDropdownOpen(true)}
+                  onMouseLeave={() => setServicesDropdownOpen(false)}
+                >
+                  <Link
+                    href="/servizi"
+                    className="flex items-center gap-1 text-text-secondary transition-colors hover:text-text"
+                    onKeyDown={handleDropdownKeyDown}
+                    aria-expanded={servicesDropdownOpen}
+                    aria-haspopup="true"
+                    aria-controls="services-dropdown"
+                  >
+                    Servizi
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`transition-transform duration-200 ${
+                        servicesDropdownOpen ? 'rotate-180' : ''
+                      }`}
+                      aria-hidden="true"
                     >
-                      {serviceSubmenuItems.map((item, index) => (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/10 hover:text-primary focus:bg-primary/10 focus:text-primary focus:outline-none"
-                          role="menuitem"
-                          onClick={closeServicesDropdown}
-                          tabIndex={0}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </Link>
 
-              {/* <Link
-                href="/progetti"
-                className="text-text-secondary transition-colors hover:text-text"
-              >
-                Progetti
-              </Link>
-              <Link
-                href="/gallery"
-                className="text-text-secondary transition-colors hover:text-text"
-              >
-                Gallery
-              </Link> */}
-              <Link
-                href="/contatti"
-                className="hover:text-text text-text-secondary transition-colors"
-              >
-                Contatti
-              </Link>
+                  {/* Dropdown menu */}
+                  <AnimatePresence>
+                    {servicesDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute left-0 z-50 mt-2 w-48 rounded-md bg-white py-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        id="services-dropdown"
+                        ref={dropdownMenuRef}
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="services-menu-button"
+                        onMouseEnter={() => setServicesDropdownOpen(true)}
+                        onMouseLeave={() => setServicesDropdownOpen(false)}
+                      >
+                        {serviceSubmenuItems.map((item, index) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/10 hover:text-primary focus:bg-primary/10 focus:text-primary focus:outline-none"
+                            role="menuitem"
+                            onClick={closeServicesDropdown}
+                            tabIndex={0}
+                          >
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+                <Link
+                  href="/collabora"
+                  className="text-text-secondary transition-colors hover:text-text"
+                >
+                  Collabora con noi
+                </Link>
+
+                <Link
+                  href="/contatti"
+                  className="text-text-secondary transition-colors hover:text-text"
+                >
+                  Contatti
+                </Link>
+              </div>
             </div>
 
             <div className="hidden md:block">
@@ -242,7 +238,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="bg-bg/60 fixed inset-0 z-40 backdrop-blur-md md:hidden"
+            className="fixed inset-0 z-40 bg-bg/60 backdrop-blur-md md:hidden"
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
@@ -252,7 +248,7 @@ export default function Header() {
             <div className="container-custom flex justify-end border-b border-white/10 py-6">
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="focus:ring-offset-bg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg"
                 aria-label="Close menu"
               >
                 <svg
