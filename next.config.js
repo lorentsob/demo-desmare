@@ -8,16 +8,17 @@ const nextConfig = {
     // This makes Next.js optimize the images in public directory too
     unoptimized: false,
   },
-  webpack: (config, { dev, isServer }) => {
-    // Limita la dimensione della cache webpack
-    config.cache = {
-      type: 'filesystem',
-      buildDependencies: {
-        config: [__filename]
-      },
-      cacheDirectory: path.resolve(__dirname, '.next/cache'),
-      maxAge: 1000 * 60 * 60 * 24 * 7 // 1 settimana
-    };
+  webpack: (config, { isServer }) => {
+    // Fix per "TypeError: Cannot read properties of undefined (reading 'call')"
+    if (!isServer) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'react': path.resolve(__dirname, 'node_modules', 'react'),
+        'react/jsx-runtime': path.resolve(__dirname, 'node_modules', 'react/jsx-runtime'),
+        'react/jsx-dev-runtime': path.resolve(__dirname, 'node_modules', 'react/jsx-dev-runtime'),
+        'react-dom': path.resolve(__dirname, 'node_modules', 'react-dom')
+      };
+    }
     return config;
   },
 }
