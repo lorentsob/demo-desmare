@@ -4,15 +4,15 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    @apply bg-bg text-text;
   }
   
   input, textarea, select {
-    @apply w-full p-3 border border-input-border rounded-md bg-input-bg focus:border-accent focus:ring-1 focus:ring-input-focus outline-none transition-all;
+    @apply w-full p-3 border border-ui-input-border rounded-md bg-ui-input focus:border-primary focus:ring-1 focus:ring-ui-focus-ring outline-none transition-all;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply text-foreground;
+    @apply text-text;
   }
 }
 
@@ -26,23 +26,23 @@
   }
   
   .btn-primary {
-    @apply bg-accent text-white hover:bg-accent-700;
+    @apply bg-primary text-white hover:bg-primary-700;
   }
   
   .btn-secondary {
-    @apply bg-white border border-accent text-accent hover:bg-accent-50;
+    @apply bg-white border border-primary text-primary hover:bg-primary-50;
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-card border border-border p-6;
+    @apply bg-white rounded-xl shadow-card border border-ui-border p-6;
   }
   
   .icon-container {
-    @apply w-10 h-10 rounded-full bg-accent-100 flex items-center justify-center flex-shrink-0;
+    @apply w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center flex-shrink-0;
   }
   
   .icon {
-    @apply w-5 h-5 text-accent;
+    @apply w-5 h-5 text-primary;
   }
   
   .section-title {

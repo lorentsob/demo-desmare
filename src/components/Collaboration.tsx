@@ -27,15 +27,15 @@ export default function Collaboration() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="grid md:grid-cols-2 gap-8 mb-16"
         >
-          <div className="bg-card-bg border border-border rounded-xl p-8">
+          <div className="bg-ui-card-bg border border-ui-border rounded-xl p-8">
             <h3 className="text-xl font-semibold mb-4">Real-time collaboration</h3>
             <p className="text-text-secondary mb-6">
               Work together with your team in real-time. See who's viewing an issue, track changes, and collaborate on documents simultaneously.
             </p>
-            <div className="bg-background rounded-lg p-4 border border-border">
+            <div className="bg-bg rounded-lg p-4 border border-ui-border">
               <div className="flex items-center mb-4">
-                <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3">
-                  <span className="text-accent font-medium">JD</span>
+                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mr-3">
+                  <span className="text-primary font-medium">JD</span>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center mr-3">
                   <span className="text-purple-500 font-medium">KL</span>
@@ -46,35 +46,35 @@ export default function Collaboration() {
                 <div className="text-text-secondary text-sm ml-2">3 collaborators online</div>
               </div>
               <div className="space-y-2">
-                <div className="h-4 bg-border/50 rounded w-full"></div>
-                <div className="h-4 bg-border/50 rounded w-3/4"></div>
-                <div className="h-4 bg-border/50 rounded w-5/6"></div>
+                <div className="h-4 bg-ui-border/50 rounded w-full"></div>
+                <div className="h-4 bg-ui-border/50 rounded w-3/4"></div>
+                <div className="h-4 bg-ui-border/50 rounded w-5/6"></div>
               </div>
             </div>
           </div>
           
-          <div className="bg-card-bg border border-border rounded-xl p-8">
+          <div className="bg-ui-card-bg border border-ui-border rounded-xl p-8">
             <h3 className="text-xl font-semibold mb-4">Integrated workflows</h3>
             <p className="text-text-secondary mb-6">
               Connect with the tools your team already uses. Seamless integrations with Slack, GitHub, Figma, and more.
             </p>
             <div className="grid grid-cols-3 gap-4">
-              <div className="bg-background rounded-lg p-4 border border-border flex items-center justify-center">
+              <div className="bg-bg rounded-lg p-4 border border-ui-border flex items-center justify-center">
                 <span className="text-sm">Slack</span>
               </div>
-              <div className="bg-background rounded-lg p-4 border border-border flex items-center justify-center">
+              <div className="bg-bg rounded-lg p-4 border border-ui-border flex items-center justify-center">
                 <span className="text-sm">GitHub</span>
               </div>
-              <div className="bg-background rounded-lg p-4 border border-border flex items-center justify-center">
+              <div className="bg-bg rounded-lg p-4 border border-ui-border flex items-center justify-center">
                 <span className="text-sm">Figma</span>
               </div>
-              <div className="bg-background rounded-lg p-4 border border-border flex items-center justify-center">
+              <div className="bg-bg rounded-lg p-4 border border-ui-border flex items-center justify-center">
                 <span className="text-sm">Notion</span>
               </div>
-              <div className="bg-background rounded-lg p-4 border border-border flex items-center justify-center">
+              <div className="bg-bg rounded-lg p-4 border border-ui-border flex items-center justify-center">
                 <span className="text-sm">Google</span>
               </div>
-              <div className="bg-background rounded-lg p-4 border border-border flex items-center justify-center text-text-secondary">
+              <div className="bg-bg rounded-lg p-4 border border-ui-border flex items-center justify-center text-text-secondary">
                 <span>+20 more</span>
               </div>
             </div>
@@ -86,7 +86,7 @@ export default function Collaboration() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-card-bg border border-border rounded-xl overflow-hidden"
+          className="bg-ui-card-bg border border-ui-border rounded-xl overflow-hidden"
         >
           <div className="p-8">
             <h3 className="text-xl font-semibold mb-4">Advanced data visualization</h3>
@@ -94,7 +94,7 @@ export default function Collaboration() {
               Gain insights with powerful data visualization tools. Track velocity, monitor progress, and identify bottlenecks.
             </p>
           </div>
-          <div className="w-full h-72 bg-gradient-to-br from-accent/10 via-purple-500/10 to-emerald-500/10 flex items-center justify-center">
+          <div className="w-full h-72 bg-gradient-to-br from-primary/10 via-purple-500/10 to-emerald-500/10 flex items-center justify-center">
             <p className="text-foreground font-medium">Data Visualization</p>
           </div>
         </motion.div>

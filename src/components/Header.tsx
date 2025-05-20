@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
-import { useCallback, useRef, useState } from 'react';
+import { RefObject, useCallback, useRef, useState } from 'react';
 import { useBodyScroll } from '../hooks/useBodyScroll';
 import { useKeyboardNavigation } from '../hooks/useKeyboardNavigation';
 import QuoteRequestModal from './QuoteRequestModal';
@@ -49,7 +49,7 @@ export default function Header() {
   // Handle keyboard navigation for desktop dropdown
   useKeyboardNavigation(
     servicesDropdownOpen,
-    dropdownMenuRef,
+    dropdownMenuRef as RefObject<HTMLElement>,
     closeServicesDropdown,
   );
 
@@ -83,7 +83,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-background/85 backdrop-blur-lg">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-white/85 backdrop-blur-lg">
         <div className="container-custom">
           <nav
             className="flex items-center justify-between py-6"
@@ -99,7 +99,7 @@ export default function Header() {
             <div className="hidden items-center space-x-8 md:flex">
               <Link
                 href="/chi-siamo"
-                className="text-text-secondary transition-colors hover:text-foreground"
+                className="hover:text-text text-text-secondary transition-colors"
               >
                 Chi Siamo
               </Link>
@@ -113,7 +113,7 @@ export default function Header() {
               >
                 <Link
                   href="/servizi"
-                  className="flex items-center gap-1 text-text-secondary transition-colors hover:text-foreground"
+                  className="hover:text-text flex items-center gap-1 text-text-secondary transition-colors"
                   onKeyDown={handleDropdownKeyDown}
                   aria-expanded={servicesDropdownOpen}
                   aria-haspopup="true"
@@ -160,7 +160,7 @@ export default function Header() {
                         <Link
                           key={item.href}
                           href={item.href}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-accent/10 hover:text-accent focus:bg-accent/10 focus:text-accent focus:outline-none"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/10 hover:text-primary focus:bg-primary/10 focus:text-primary focus:outline-none"
                           role="menuitem"
                           onClick={closeServicesDropdown}
                           tabIndex={0}
@@ -173,21 +173,21 @@ export default function Header() {
                 </AnimatePresence>
               </div>
 
-              <Link
+              {/* <Link
                 href="/progetti"
-                className="text-text-secondary transition-colors hover:text-foreground"
+                className="text-text-secondary transition-colors hover:text-text"
               >
                 Progetti
               </Link>
               <Link
                 href="/gallery"
-                className="text-text-secondary transition-colors hover:text-foreground"
+                className="text-text-secondary transition-colors hover:text-text"
               >
                 Gallery
-              </Link>
+              </Link> */}
               <Link
                 href="/contatti"
-                className="text-text-secondary transition-colors hover:text-foreground"
+                className="hover:text-text text-text-secondary transition-colors"
               >
                 Contatti
               </Link>
@@ -242,7 +242,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-background/60 backdrop-blur-md md:hidden"
+            className="bg-bg/60 fixed inset-0 z-40 backdrop-blur-md md:hidden"
             id="mobile-menu"
             role="dialog"
             aria-modal="true"
@@ -252,7 +252,7 @@ export default function Header() {
             <div className="container-custom flex justify-end border-b border-white/10 py-6">
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
+                className="focus:ring-offset-bg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 aria-label="Close menu"
               >
                 <svg
@@ -282,14 +282,14 @@ export default function Header() {
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
+                  className="text-lg font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none"
                 >
                   Home
                 </Link>
                 <Link
                   href="/chi-siamo"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
+                  className="text-lg font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none"
                 >
                   Chi Siamo
                 </Link>
@@ -298,7 +298,7 @@ export default function Header() {
                 <div className="w-full space-y-2" ref={mobileDropdownRef}>
                   <button
                     ref={mobileServicesButtonRef}
-                    className="flex w-full items-center justify-between text-left text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
+                    className="flex w-full items-center justify-between text-left text-lg font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none"
                     onClick={toggleMobileServices}
                     aria-expanded={mobileServicesExpanded}
                     aria-controls="mobile-services-dropdown"
@@ -339,7 +339,7 @@ export default function Header() {
                             key={item.href}
                             href={item.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="block text-lg text-text-secondary transition-colors hover:text-accent focus:text-accent focus:outline-none"
+                            className="block text-lg text-text-secondary transition-colors hover:text-primary focus:text-primary focus:outline-none"
                           >
                             {item.name}
                           </Link>
@@ -352,21 +352,21 @@ export default function Header() {
                 <Link
                   href="/progetti"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
+                  className="text-lg font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none"
                 >
                   Progetti
                 </Link>
                 <Link
                   href="/gallery"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
+                  className="text-lg font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none"
                 >
                   Gallery
                 </Link>
                 <Link
                   href="/contatti"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-lg font-medium transition-colors hover:text-accent focus:text-accent focus:outline-none"
+                  className="text-lg font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none"
                 >
                   Contatti
                 </Link>

@@ -31,8 +31,8 @@ export function Button({
   const variantClasses = {
     primary: "btn-primary",
     secondary: "btn-secondary",
-    outline: "border border-accent text-accent hover:bg-accent-50",
-    ghost: "bg-transparent text-foreground hover:bg-accent-50",
+    outline: "border border-primary text-primary hover:bg-primary-50",
+    ghost: "bg-transparent text-text hover:bg-primary-50",
   };
 
   // Size classes
@@ -93,8 +93,8 @@ export function ButtonLink({
   const variantClasses = {
     primary: "btn-primary",
     secondary: "btn-secondary",
-    outline: "border border-accent text-accent hover:bg-accent-50",
-    ghost: "bg-transparent text-foreground hover:bg-accent-50",
+    outline: "border border-primary text-primary hover:bg-primary-50",
+    ghost: "bg-transparent text-text hover:bg-primary-50",
   };
 
   // Size classes

@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 interface CardProps {
   children: ReactNode;
   className?: string;
-  variant?: "default" | "accent" | "secondary";
+  variant?: "default" | "primary" | "secondary";
 }
 
 export function Card({
@@ -15,7 +15,7 @@ export function Card({
 
   const variantClasses = {
     default: "",
-    accent: "bg-accent-50 border-accent-100",
+    primary: "bg-primary-50 border-primary-100",
     secondary: "bg-section-bg-light",
   };
 

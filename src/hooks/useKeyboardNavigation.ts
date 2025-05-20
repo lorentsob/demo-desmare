@@ -9,9 +9,9 @@ type KeyHandler = (event: KeyboardEvent) => void;
  * @param onClose - Function to close the dropdown
  * @param focusableSelector - CSS selector for focusable elements within the dropdown
  */
-export function useKeyboardNavigation(
+export function useKeyboardNavigation<T extends HTMLElement>(
   isOpen: boolean,
-  containerRef: RefObject<HTMLElement>,
+  containerRef: RefObject<T>,
   onClose: () => void,
   focusableSelector: string = 'a[href], button, [tabindex]:not([tabindex="-1"])',
 ): void {

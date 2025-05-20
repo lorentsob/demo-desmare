@@ -40,15 +40,15 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <select
           ref={ref}
           className={`
-            bg-input-bg
-            border border-input-border
+            bg-ui-input
+            border border-ui-input-border
             rounded-md
             px-3 py-2
             text-foreground
             focus:outline-none
             focus:ring-2
             focus:ring-ui-focus-ring
-            focus:border-accent
+            focus:border-primary
             transition-all
             disabled:opacity-60
             disabled:cursor-not-allowed

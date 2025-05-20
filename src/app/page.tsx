@@ -1,24 +1,24 @@
-import { Suspense, lazy } from "react";
-import Hero from "@/components/Hero";
-import ClientLogosSection from "@/components/ClientLogosSection";
-import type { Metadata } from "next";
+import ClientLogosSection from '@/components/ClientLogosSection';
+import Hero from '@/components/Hero';
+import type { Metadata } from 'next';
+import { Suspense, lazy } from 'react';
 
 // Lazy load components that aren't visible in the initial viewport
-const ServicesPreview = lazy(() => import("@/components/ServicesPreview"));
-const StatsSection = lazy(() => import("@/components/StatsSection"));
-const AboutPreview = lazy(() => import("@/components/AboutPreview"));
-const ProjectsPreview = lazy(() => import("@/components/ProjectsPreview"));
+const ServicesPreview = lazy(() => import('@/components/ServicesPreview'));
+const StatsSection = lazy(() => import('@/components/StatsSection'));
+const AboutPreview = lazy(() => import('@/components/AboutPreview'));
+const ProjectsPreview = lazy(() => import('@/components/ProjectsPreview'));
 const TestimonialsSection = lazy(
-  () => import("@/components/TestimonialsSection")
+  () => import('@/components/TestimonialsSection'),
 );
-const GalleryPreview = lazy(() => import("@/components/GalleryPreview"));
-const CTASection = lazy(() => import("@/components/CTASection"));
-const CTAPros = lazy(() => import("@/components/CTAPros"));
+const GalleryPreview = lazy(() => import('@/components/GalleryPreview'));
+const CTASection = lazy(() => import('@/components/CTASection'));
+const CTAPros = lazy(() => import('@/components/CTAPros'));
 
 export const metadata: Metadata = {
-  title: "Desmare - Demolizioni, Smaltimento e Recupero Materiali",
+  title: 'Desmare - Demolizioni, Smaltimento e Recupero Materiali',
   description:
-    "Desmare offre servizi professionali di demolizione, smaltimento rifiuti e recupero materiali con attenzione alla sostenibilità ambientale.",
+    'Desmare offre servizi professionali di demolizione, smaltimento rifiuti e recupero materiali con attenzione alla sostenibilità ambientale.',
 };
 
 export default function HomePage() {
@@ -28,7 +28,7 @@ export default function HomePage() {
       <ClientLogosSection />
       <Suspense
         fallback={
-          <div className="h-96 flex items-center justify-center">
+          <div className="flex h-96 items-center justify-center">
             Caricamento...
           </div>
         }
@@ -38,7 +38,7 @@ export default function HomePage() {
         <AboutPreview />
         <ProjectsPreview />
         <TestimonialsSection />
-        <GalleryPreview />
+        {/* <GalleryPreview /> */}
         <CTASection />
         <CTAPros />
       </Suspense>

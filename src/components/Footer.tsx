@@ -47,7 +47,7 @@ export default function Footer() {
 
             <Link
               href="/servizi#demolizioni"
-              className="text-text-secondary transition-colors hover:text-foreground"
+              className="text-text-secondary transition-colors hover:text-text"
               aria-labelledby="footer-per-i-professionisti"
             >
               <h4 className="mb-4 font-medium" id="footer-per-i-professionisti">
@@ -56,7 +56,7 @@ export default function Footer() {
             </Link>
             <Link
               href="/"
-              className="text-text-secondary transition-colors hover:text-foreground"
+              className="text-text-secondary transition-colors hover:text-text"
               aria-labelledby="footer-certificazioni"
             >
               <h4 className="mb-4 font-medium" id="footer-certificazioni">
@@ -73,7 +73,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/chi-siamo"
-                  className="text-text-secondary transition-colors hover:text-foreground"
+                  className="text-text-secondary transition-colors hover:text-text"
                 >
                   Chi Siamo
                 </Link>
@@ -81,7 +81,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/gallery"
-                  className="text-text-secondary transition-colors hover:text-foreground"
+                  className="text-text-secondary transition-colors hover:text-text"
                 >
                   Gallery
                 </Link>
@@ -93,7 +93,7 @@ export default function Footer() {
           <div>
             <Link
               href="/contatti"
-              className="text-text-foreground transition-colors hover:text-foreground"
+              className="text-text transition-colors hover:text-text"
               aria-labelledby="footer-contatti"
             >
               <h4 className="mb-4 font-medium" id="footer-contatti">
@@ -105,7 +105,7 @@ export default function Footer() {
               <li className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="mr-2 h-5 w-5 text-accent"
+                  className="mr-2 h-5 w-5 text-primary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -120,7 +120,7 @@ export default function Footer() {
                 </svg>
                 <a
                   href="mailto:info@desmare.it"
-                  className="text-text-secondary transition-colors hover:text-foreground"
+                  className="text-text-secondary transition-colors hover:text-text"
                   aria-label="Email: info@desmare.it"
                 >
                   info@desmare.it
@@ -129,7 +129,7 @@ export default function Footer() {
               <li className="flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="mr-2 h-5 w-5 text-accent"
+                  className="mr-2 h-5 w-5 text-primary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -144,7 +144,7 @@ export default function Footer() {
                 </svg>
                 <a
                   href="tel:+390123456789"
-                  className="text-text-secondary transition-colors hover:text-foreground"
+                  className="text-text-secondary transition-colors hover:text-text"
                   aria-label="Telefono: +39 0123 456789"
                 >
                   +39 0123 456789
@@ -164,19 +164,19 @@ export default function Footer() {
             <div className="mt-4 flex space-x-6 md:mt-0">
               <Link
                 href="/termini-e-condizioni"
-                className="text-sm text-text-secondary transition-colors hover:text-foreground"
+                className="text-sm text-text-secondary transition-colors hover:text-text"
               >
                 Termini e Condizioni
               </Link>
               <Link
                 href="/privacy"
-                className="text-sm text-text-secondary transition-colors hover:text-foreground"
+                className="text-sm text-text-secondary transition-colors hover:text-text"
               >
                 Privacy
               </Link>
               <Link
                 href="/cookie"
-                className="text-sm text-text-secondary transition-colors hover:text-foreground"
+                className="text-sm text-text-secondary transition-colors hover:text-text"
               >
                 Cookie
               </Link>
