@@ -4,7 +4,7 @@ import { useBodyScroll } from './useBodyScroll';
 interface UseModalProps {
   isOpen: boolean;
   onClose: () => void;
-  modalRef?: RefObject<HTMLElement>;
+  modalRef?: RefObject<HTMLElement | HTMLDivElement | null>;
   resetFn?: () => void;
 }
 

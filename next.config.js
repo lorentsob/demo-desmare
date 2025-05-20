@@ -21,6 +21,11 @@ const nextConfig = {
     }
     return config;
   },
+  // Update ESLint configuration for Next.js 15.3.2
+  eslint: {
+    // Only run ESLint on these directories during production builds
+    dirs: ['src']
+  },
 }
 
 module.exports = nextConfig

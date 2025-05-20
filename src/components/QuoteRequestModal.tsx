@@ -141,7 +141,7 @@ export default function QuoteRequestModal({
                 </h2>
                 <button
                   onClick={onClose}
-                  className="text-text-secondary transition-colors hover:text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="text-text-secondary transition-colors hover:text-text focus:outline-none focus:ring-2 focus:ring-primary"
                   aria-label="Chiudi modale"
                 >
                   <svg
