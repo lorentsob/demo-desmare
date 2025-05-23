@@ -67,13 +67,13 @@ export default function GallerySection() {
   // Open lightbox
   const openLightbox = (imageId: number) => {
     setCurrentImage(imageId);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+    document.body.style.overflow = 'hidden';
   };
 
   // Close lightbox
   const closeLightbox = () => {
     setCurrentImage(null);
-    document.body.style.overflow = 'auto'; // Re-enable scrolling
+    document.body.style.overflow = 'auto';
   };
 
   // Navigate to next image
@@ -109,7 +109,7 @@ export default function GallerySection() {
   };
 
   return (
-    <section className="py-20">
+    <section className="py-20" aria-label="Galleria immagini">
       <div className="container-custom">
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h1 className="mb-6 text-4xl font-bold md:text-5xl">Gallery</h1>
@@ -118,55 +118,62 @@ export default function GallerySection() {
           </p>
         </div>
 
-        <div className="mb-16 flex flex-wrap justify-center gap-4">
+        <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
           <button
             onClick={() => setFilter('all')}
-            className={`rounded-full px-6 py-3 text-lg transition-colors ${
-              filter === 'all'
-                ? 'bg-primary text-white'
-                : 'bg-primary/10 hover:bg-primary/20'
+            className={`btn ${
+              filter === 'all' ? 'btn-primary' : 'btn-outline'
             }`}
+            aria-pressed={filter === 'all'}
           >
-            Tutti
+            Tutte
           </button>
           <button
             onClick={() => setFilter('demolizioni')}
-            className={`rounded-full px-6 py-3 text-lg transition-colors ${
-              filter === 'demolizioni'
-                ? 'bg-primary text-white'
-                : 'bg-primary/10 hover:bg-primary/20'
+            className={`btn ${
+              filter === 'demolizioni' ? 'btn-primary' : 'btn-outline'
             }`}
+            aria-pressed={filter === 'demolizioni'}
           >
             Demolizioni
           </button>
           <button
-            onClick={() => setFilter('smaltimento')}
-            className={`rounded-full px-6 py-3 text-lg transition-colors ${
-              filter === 'smaltimento'
-                ? 'bg-primary text-white'
-                : 'bg-primary/10 hover:bg-primary/20'
-            }`}
-          >
-            Smaltimento
-          </button>
-          <button
             onClick={() => setFilter('recupero')}
-            className={`rounded-full px-6 py-3 text-lg transition-colors ${
-              filter === 'recupero'
-                ? 'bg-primary text-white'
-                : 'bg-primary/10 hover:bg-primary/20'
+            className={`btn ${
+              filter === 'recupero' ? 'btn-primary' : 'btn-outline'
             }`}
+            aria-pressed={filter === 'recupero'}
           >
             Recupero
           </button>
+          <button
+            onClick={() => setFilter('smaltimento')}
+            className={`btn ${
+              filter === 'smaltimento' ? 'btn-primary' : 'btn-outline'
+            }`}
+            aria-pressed={filter === 'smaltimento'}
+          >
+            Smaltimento
+          </button>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+          role="list"
+          aria-label="Immagini della galleria"
+        >
           {filteredImages.map((image) => (
             <div
               key={image.id}
               className="group relative cursor-pointer overflow-hidden rounded-lg"
               onClick={() => openLightbox(image.id)}
+              role="listitem"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  openLightbox(image.id);
+                }
+              }}
             >
               <div className="relative h-[250px] w-full">
                 <Image
@@ -174,8 +181,12 @@ export default function GallerySection() {
                   alt={image.alt}
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div
+                  className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  aria-hidden="true"
+                >
                   <span className="text-lg font-medium text-white">
                     {image.alt}
                   </span>
@@ -200,11 +211,15 @@ export default function GallerySection() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
           onClick={closeLightbox}
           onKeyDown={handleKeyDown}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Visualizzatore immagine"
           tabIndex={0}
         >
           <button
             className="absolute right-4 top-4 p-2 text-white transition-colors hover:text-primary"
             onClick={closeLightbox}
+            aria-label="Chiudi visualizzatore"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -213,6 +228,7 @@ export default function GallerySection() {
               strokeWidth={1.5}
               stroke="currentColor"
               className="h-8 w-8"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -228,6 +244,7 @@ export default function GallerySection() {
               e.stopPropagation();
               prevImage();
             }}
+            aria-label="Immagine precedente"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -236,6 +253,7 @@ export default function GallerySection() {
               strokeWidth={1.5}
               stroke="currentColor"
               className="h-8 w-8"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -280,6 +298,7 @@ export default function GallerySection() {
               e.stopPropagation();
               nextImage();
             }}
+            aria-label="Immagine successiva"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -288,6 +307,7 @@ export default function GallerySection() {
               strokeWidth={1.5}
               stroke="currentColor"
               className="h-8 w-8"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
