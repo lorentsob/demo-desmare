@@ -13,10 +13,18 @@ const nextConfig = {
     if (!isServer) {
       config.resolve.alias = {
         ...config.resolve.alias,
-        'react': path.resolve(__dirname, 'node_modules', 'react'),
-        'react/jsx-runtime': path.resolve(__dirname, 'node_modules', 'react/jsx-runtime'),
-        'react/jsx-dev-runtime': path.resolve(__dirname, 'node_modules', 'react/jsx-dev-runtime'),
-        'react-dom': path.resolve(__dirname, 'node_modules', 'react-dom')
+        react: path.resolve(__dirname, 'node_modules', 'react'),
+        'react/jsx-runtime': path.resolve(
+          __dirname,
+          'node_modules',
+          'react/jsx-runtime',
+        ),
+        'react/jsx-dev-runtime': path.resolve(
+          __dirname,
+          'node_modules',
+          'react/jsx-dev-runtime',
+        ),
+        'react-dom': path.resolve(__dirname, 'node_modules', 'react-dom'),
       };
     }
     return config;
@@ -24,8 +32,8 @@ const nextConfig = {
   // Update ESLint configuration for Next.js 15.3.2
   eslint: {
     // Only run ESLint on these directories during production builds
-    dirs: ['src']
+    dirs: ['src'],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

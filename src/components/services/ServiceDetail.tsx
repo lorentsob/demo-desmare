@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { useState } from "react";
-import QuoteRequestModal from "../QuoteRequestModal";
-import CTASection from "../CTASection";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useState } from 'react';
+import CTASection from '../CTASection';
+import QuoteRequestModal from '../QuoteRequestModal';
 
 // Define the types for the service data
 type Benefit = {
@@ -54,7 +54,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
   // Function to render the appropriate icon based on the icon name
   const renderIcon = (iconName: string) => {
     switch (iconName) {
-      case "user":
+      case 'user':
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
             />
           </svg>
         );
-      case "shield":
+      case 'shield':
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -88,7 +88,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
             />
           </svg>
         );
-      case "recycle":
+      case 'recycle':
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
             />
           </svg>
         );
-      case "truck":
+      case 'truck':
         return (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -147,17 +147,17 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
       <div className="container-custom">
         {/* Hero Section */}
         <div className="mb-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid items-center gap-12 md:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="mb-4 text-4xl font-bold md:text-5xl">
                 {service.title}
               </h1>
-              <p className="text-xl text-primary mb-6">{service.subtitle}</p>
-              <p className="text-lg text-text-secondary mb-8">
+              <p className="mb-6 text-xl text-primary">{service.subtitle}</p>
+              <p className="mb-8 text-lg text-text-secondary">
                 {service.description}
               </p>
               <button
@@ -171,7 +171,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative h-[400px] rounded-xl overflow-hidden shadow-xl"
+              className="relative h-[400px] overflow-hidden rounded-xl shadow-xl"
             >
               <Image
                 src={service.heroImage}
@@ -191,10 +191,10 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           transition={{ duration: 0.6 }}
           className="mb-24"
         >
-          <h2 className="text-3xl font-bold mb-12 text-center">
+          <h2 className="mb-12 text-center text-3xl font-bold">
             I vantaggi delle nostre soluzioni
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {service.benefits.map((benefit, index) => (
               <motion.div
                 key={benefit.title}
@@ -202,12 +202,12 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md border border-border"
+                className="border-border rounded-xl border bg-white p-6 shadow-md"
               >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                   {renderIcon(benefit.icon)}
                 </div>
-                <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
+                <h3 className="mb-3 text-xl font-bold">{benefit.title}</h3>
                 <p className="text-text-secondary">{benefit.description}</p>
               </motion.div>
             ))}
@@ -222,36 +222,36 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           transition={{ duration: 0.6 }}
           className="mb-24"
         >
-          <h2 className="text-3xl font-bold mb-12 text-center">
+          <h2 className="mb-12 text-center text-3xl font-bold">
             Il nostro processo
           </h2>
           <div className="relative">
             {/* Timeline Line */}
-            <div className="absolute left-[15px] md:left-1/2 transform md:-translate-x-px top-0 h-full w-[2px] bg-primary/20"></div>
+            <div className="absolute left-[15px] top-0 h-full w-[2px] transform bg-primary/20 md:left-1/2 md:-translate-x-px"></div>
 
             <div className="space-y-12">
               {service.process.map((step, index) => (
                 <div
                   key={step.title}
-                  className="relative grid md:grid-cols-2 gap-8 items-center"
+                  className="relative grid items-center gap-8 md:grid-cols-2"
                 >
                   {/* Timeline Dot */}
-                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-bold z-10">
+                  <div className="absolute left-0 z-10 flex h-8 w-8 transform items-center justify-center rounded-full bg-primary font-bold text-white md:left-1/2 md:-translate-x-1/2">
                     {step.step}
                   </div>
 
                   <div
                     className={`pl-12 md:pl-0 ${
                       index % 2 === 0
-                        ? "md:text-right md:pr-12"
-                        : "md:order-2 md:pl-12"
+                        ? 'md:pr-12 md:text-right'
+                        : 'md:order-2 md:pl-12'
                     }`}
                   >
-                    <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                    <h3 className="mb-2 text-xl font-bold">{step.title}</h3>
                     <p className="text-text-secondary">{step.description}</p>
                   </div>
 
-                  <div className={index % 2 === 0 ? "md:order-2" : ""}></div>
+                  <div className={index % 2 === 0 ? 'md:order-2' : ''}></div>
                 </div>
               ))}
             </div>
@@ -266,7 +266,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           transition={{ duration: 0.6 }}
           className="mb-24"
         >
-          <h2 className="text-3xl font-bold mb-12 text-center">
+          <h2 className="mb-12 text-center text-3xl font-bold">
             Tipologie di intervento
           </h2>
           <div className="space-y-16">
@@ -277,11 +277,11 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className={`grid md:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""
+                className={`grid items-center gap-12 md:grid-cols-2 ${
+                  index % 2 === 1 ? 'md:[&>div:first-child]:order-2' : ''
                 }`}
               >
-                <div className="relative h-[300px] rounded-xl overflow-hidden shadow-lg">
+                <div className="relative h-[300px] overflow-hidden rounded-xl shadow-lg">
                   <Image
                     src={category.image}
                     alt={category.title}
@@ -290,7 +290,7 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                   />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-4">{category.title}</h3>
+                  <h3 className="mb-4 text-2xl font-bold">{category.title}</h3>
                   <p className="text-lg text-text-secondary">
                     {category.description}
                   </p>
@@ -306,12 +306,12 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-24 bg-primary/5 rounded-2xl p-8 md:p-12"
+          className="mb-24 rounded-2xl bg-primary/5 p-8 md:p-12"
         >
-          <h2 className="text-3xl font-bold mb-10 text-center">
+          <h2 className="mb-10 text-center text-3xl font-bold">
             Certificazioni e autorizzazioni
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
             {service.certifications.map((certification, index) => (
               <motion.div
                 key={certification}
@@ -319,11 +319,11 @@ export default function ServiceDetail({ service }: ServiceDetailProps) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className="flex items-center bg-white p-4 rounded-lg shadow-sm"
+                className="flex items-center rounded-lg bg-white p-4 shadow-sm"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-primary mr-3"
+                  className="mr-3 h-6 w-6 text-primary"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
