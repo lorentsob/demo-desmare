@@ -16,9 +16,33 @@ const CTASection = lazy(() => import('@/components/CTASection'));
 const CTAPros = lazy(() => import('@/components/CTAPros'));
 
 export const metadata: Metadata = {
-  title: 'Desmare - Demolizioni, Smaltimento e Recupero Materiali',
+  title: 'Desmare - Servizi Professionali di Demolizione e Gestione Ambientale',
   description:
-    'Desmare offre servizi professionali di demolizione, smaltimento rifiuti e recupero materiali con attenzione alla sostenibilità ambientale.',
+    'Servizi professionali di demolizione, strip-out, gestione rifiuti e bonifica amianto. Soluzioni sostenibili e conformi alle normative per progetti di demolizione e riqualificazione.',
+  keywords: [
+    'demolizioni professionali',
+    'gestione rifiuti',
+    'bonifica amianto',
+    'strip-out',
+    'riqualificazione ambientale',
+  ],
+  openGraph: {
+    title:
+      'Desmare - Servizi Professionali di Demolizione e Gestione Ambientale',
+    description:
+      'Servizi professionali di demolizione, strip-out, gestione rifiuti e bonifica amianto. Soluzioni sostenibili e conformi alle normative.',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Desmare - Servizi Professionali di Demolizione',
+      },
+    ],
+  },
+  alternates: {
+    canonical: 'https://desmare.it',
+  },
 };
 
 export default function HomePage() {

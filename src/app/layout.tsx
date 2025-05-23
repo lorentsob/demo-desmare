@@ -11,26 +11,55 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Demo Desmare', // Titolo generico, può essere personalizzato in seguito
-  description: 'Sito demo Desmare migrato ad App Router', // Descrizione generica
-  metadataBase: new URL('https://demo-desmare.com'), // Base URL per i metadata
-  icons: {
-    icon: '/favicon.png', // Default favicon
-    // You can add additional sizes and formats here
-    // apple: '/apple-icon.png',
-    // shortcut: '/shortcut-icon.png',
+  metadataBase: new URL('https://desmare.it'),
+  title: {
+    default: 'Desmare | Professional Demolition and Environmental Services',
+    template: '%s | Desmare',
   },
-  // Ottimizzazioni per SEO e social sharing
+  description:
+    'Professional demolition, strip-out, and environmental services with a focus on sustainability and regulatory compliance.',
+  keywords: [
+    'demolition services',
+    'strip-out services',
+    'waste management',
+    'environmental services',
+    'asbestos removal',
+  ],
+  authors: [{ name: 'Desmare' }],
+  creator: 'Desmare',
+  publisher: 'Desmare',
+  // robots: {
+  //   index: true,
+  //   follow: true,
+  //   googleBot: {
+  //     index: true,
+  //     follow: true,
+  //     'max-video-preview': -1,
+  //     'max-image-preview': 'large',
+  //     'max-snippet': -1,
+  //   },
+  // },
   openGraph: {
     type: 'website',
     locale: 'it_IT',
-    url: 'https://demo-desmare.com',
-    siteName: 'Demo Desmare',
+    url: 'https://desmare.it',
+    title: 'Desmare - Servizi di Demolizione Professionali',
+    description:
+      'Servizi professionali di demolizione, strip-out e gestione rifiuti con un approccio sostenibile e conforme alle normative.',
+    siteName: 'Desmare',
   },
-  // Ottimizzazioni per la cache
-  robots: {
-    index: true,
-    follow: true,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Desmare - Servizi di Demolizione Professionali',
+    description:
+      'Servizi professionali di demolizione, strip-out e gestione rifiuti con un approccio sostenibile e conforme alle normative.',
+  },
+  alternates: {
+    canonical: 'https://desmare.it',
+  },
+  other: {
+    'theme-color': '#08A045',
+    'msapplication-TileColor': '#08A045',
   },
 };
 
@@ -43,7 +72,9 @@ export default function RootLayout({
     <html lang="it" className={inter.variable}>
       <body className="font-sans">
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen" role="main" id="main-content">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
