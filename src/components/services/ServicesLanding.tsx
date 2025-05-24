@@ -1,64 +1,13 @@
 'use client';
 
 import QuoteRequestModal from '@/components/QuoteRequestModal';
+import { servicesContent } from '@/content/services';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import CTASection from '../CTASection';
 import ValuePro from '../ValuePro';
-
-// Define the service categories according to the instructions
-const serviceCategories = [
-  {
-    id: 'demolizioni',
-    title: 'Demolizioni chiavi in mano',
-    description:
-      "Servizi completi di demolizione per qualsiasi struttura con un unico referente, dalla pianificazione alla consegna del sito. Gestiamo l'intero processo eliminando complessità e stress per il cliente.",
-    image: '/images/horizontal-1.jpg',
-    link: '/servizi/demolizioni',
-    features: [
-      'Demolizioni civili',
-      'Demolizioni industriali',
-      'Demolizioni speciali',
-      'Gestione completa del progetto',
-      'Unico punto di contatto',
-      'Conformità normativa garantita',
-    ],
-  },
-  {
-    id: 'strip-out',
-    title: 'Strip-out',
-    description:
-      "Eseguiamo lavori precisi di strip-out per preparare gli spazi alla ristrutturazione o riqualificazione, minimizzando l'impatto sulle strutture adiacenti e garantendo la massima efficienza.",
-    image: '/images/horizontal-2.jpg',
-    link: '/servizi/strip-out',
-    features: [
-      'Rimozione di elementi non strutturali',
-      'Preparazione per ristrutturazioni',
-      'Minimizzazione dei disturbi',
-      'Preservazione degli elementi da mantenere',
-      'Recupero di materiali riutilizzabili',
-      'Pulizia completa post-intervento',
-    ],
-  },
-  {
-    id: 'rifiuti-pericolosi',
-    title: 'Rifiuti pericolosi e bonifica ambientale',
-    description:
-      "Ci occupiamo della gestione sicura e conforme di rifiuti pericolosi, incluso l'amianto, con un focus sulla sicurezza, la conformità normativa e la tutela dell'ambiente.",
-    image: '/images/horizontal-3.jpg',
-    link: '/servizi/rifiuti-pericolosi',
-    features: [
-      'Bonifica amianto',
-      'Gestione rifiuti pericolosi',
-      'Analisi e caratterizzazione',
-      'Conformità normativa',
-      'Certificazioni complete',
-      "Soluzioni rispettose dell'ambiente",
-    ],
-  },
-];
 
 export default function ServicesLanding() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -80,7 +29,7 @@ export default function ServicesLanding() {
             transition={{ duration: 0.5 }}
             className="mb-6 text-4xl font-bold md:text-5xl"
           >
-            Soluzioni complete per demolizione e gestione ambientale
+            {servicesContent.landing.title}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -88,14 +37,13 @@ export default function ServicesLanding() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-xl text-text-secondary"
           >
-            Offriamo servizi chiavi in mano, dalla demolizione alla gestione dei
-            rifiuti, con un unico referente per tutto il progetto.
+            {servicesContent.landing.subtitle}
           </motion.p>
         </div>
 
         {/* Service Categories */}
         <div className="mb-24 space-y-24">
-          {serviceCategories.map((category, index) => (
+          {servicesContent.landing.categories.map((category, index) => (
             <motion.div
               key={category.id}
               initial={{ opacity: 0, y: 30 }}

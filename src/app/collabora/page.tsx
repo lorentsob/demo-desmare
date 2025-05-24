@@ -1,15 +1,11 @@
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
 import ValuePro from '@/components/ValuePro';
+import { generateMetadata } from '@/content/metadata';
 import { useSiteConfig } from '@/hooks/useSiteConfig';
-import type { Metadata } from 'next';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Collabora con noi | Desmare',
-  description:
-    'Unisciti al nostro team di professionisti nel settore delle demolizioni e della bonifica ambientale. Opportunità di crescita e ambiente di lavoro sicuro.',
-};
+export const metadata = generateMetadata('collabora');
 
 const positions = [
   {

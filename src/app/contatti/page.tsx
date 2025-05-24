@@ -1,14 +1,11 @@
-import ContactSection from "@/components/ContactSection";
-import type { Metadata } from "next";
+import ContactSection from '@/components/ContactSection';
+import { generateMetadata } from '@/content/metadata';
 
-export const metadata: Metadata = {
-  title: "Contatti | Desmare",
-  description: "Contattaci per informazioni o preventivi",
-};
+export const metadata = generateMetadata('contatti');
 
 export default function ContattiPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <main>
         <ContactSection />
       </main>

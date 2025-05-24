@@ -11,15 +11,15 @@ const services = [
     image: '/images/horizontal-1.jpg',
   },
   {
-    id: 'smaltimento',
-    title: 'Smaltimento Rifiuti',
+    id: 'strip-out',
+    title: 'Strip-out',
     description: 'Gestione professionale dei rifiuti edili e speciali.',
     image: '/images/horizontal-2.jpg',
   },
   {
-    id: 'recupero',
-    title: 'Recupero Materiali',
-    description: 'Recupero e riciclo di materiali da demolizione.',
+    id: 'rifiuti-pericolosi',
+    title: 'Gestione di rifiuti pericolosi',
+    description: 'Gestione e smaltimento di rifiuti pericolosi.',
     image: '/images/horizontal-3.jpg',
   },
 ];

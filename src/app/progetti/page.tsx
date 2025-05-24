@@ -1,14 +1,11 @@
-import ProjectsSection from "@/components/ProjectsSection";
-import type { Metadata } from "next";
+import ProjectsSection from '@/components/ProjectsSection';
+import { generateMetadata } from '@/content/metadata';
 
-export const metadata: Metadata = {
-  title: "Progetti | Desmare",
-  description: "I nostri progetti e lavori realizzati",
-};
+export const metadata = generateMetadata('progetti');
 
 export default function ProgettiPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <main>
         <ProjectsSection />
       </main>

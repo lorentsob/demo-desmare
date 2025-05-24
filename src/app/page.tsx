@@ -1,5 +1,6 @@
 import ClientLogosSection from '@/components/ClientLogosSection';
 import Hero from '@/components/Hero';
+import { generateMetadata } from '@/content/metadata';
 import type { Metadata } from 'next';
 import { Suspense, lazy } from 'react';
 
@@ -15,41 +16,12 @@ const GalleryPreview = lazy(() => import('@/components/GalleryPreview'));
 const CTASection = lazy(() => import('@/components/CTASection'));
 const CTAPros = lazy(() => import('@/components/CTAPros'));
 
-export const metadata: Metadata = {
-  title: 'Desmare - Servizi Professionali di Demolizione e Gestione Ambientale',
-  description:
-    'Servizi professionali di demolizione, strip-out, gestione rifiuti e bonifica amianto. Soluzioni sostenibili e conformi alle normative per progetti di demolizione e riqualificazione.',
-  keywords: [
-    'demolizioni professionali',
-    'gestione rifiuti',
-    'bonifica amianto',
-    'strip-out',
-    'riqualificazione ambientale',
-  ],
-  openGraph: {
-    title:
-      'Desmare - Servizi Professionali di Demolizione e Gestione Ambientale',
-    description:
-      'Servizi professionali di demolizione, strip-out, gestione rifiuti e bonifica amianto. Soluzioni sostenibili e conformi alle normative.',
-    images: [
-      {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Desmare - Servizi Professionali di Demolizione',
-      },
-    ],
-  },
-  alternates: {
-    canonical: 'https://desmare.it',
-  },
-};
+export const metadata: Metadata = generateMetadata('home');
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <ClientLogosSection />
       <Suspense
         fallback={
           <div className="flex h-96 items-center justify-center">
@@ -61,6 +33,7 @@ export default function HomePage() {
         <StatsSection />
         <AboutPreview />
         <ProjectsPreview />
+        <ClientLogosSection />
         <TestimonialsSection />
         {/* <GalleryPreview /> */}
         <CTASection />

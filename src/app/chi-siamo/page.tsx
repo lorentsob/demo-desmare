@@ -1,15 +1,11 @@
-import AboutSection from "@/components/AboutSection";
-import type { Metadata } from "next";
+import AboutSection from '@/components/AboutSection';
+import { generateMetadata } from '@/content/metadata';
 
-export const metadata: Metadata = {
-  title: "Chi Siamo | Desmare",
-  description:
-    "Chi siamo: scopri di più sulla nostra azienda e la nostra missione",
-};
+export const metadata = generateMetadata('chi-siamo');
 
 export default function ChiSiamoPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <main>
         <AboutSection />
       </main>

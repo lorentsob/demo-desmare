@@ -77,7 +77,7 @@ export default function QuoteRequestModal({
     setErrorMessage('');
 
     try {
-      const response = await fetch('/api/quote-request', {
+      const response = await fetch('/api/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -87,7 +87,7 @@ export default function QuoteRequestModal({
 
       if (!response.ok) {
         throw new Error(
-          result.message || "Errore durante l'invio della richiesta",
+          result.error || "Errore durante l'invio della richiesta",
         );
       }
 
@@ -164,7 +164,7 @@ export default function QuoteRequestModal({
 
               {isSuccess && (
                 <div
-                  className="mb-4 rounded-md bg-success-light p-3 text-success"
+                  className="bg-success-light text-success mb-4 rounded-md p-3"
                   role="alert"
                 >
                   Richiesta inviata con successo!
@@ -173,7 +173,7 @@ export default function QuoteRequestModal({
 
               {isError && (
                 <div
-                  className="mb-4 rounded-md bg-error-light p-3 text-error"
+                  className="bg-error-light text-error mb-4 rounded-md p-3"
                   role="alert"
                 >
                   {errorMessage ||
@@ -205,7 +205,7 @@ export default function QuoteRequestModal({
                   {errors.name && (
                     <p
                       id="name-error"
-                      className="mt-1 text-sm text-error"
+                      className="text-error mt-1 text-sm"
                       role="alert"
                     >
                       {errors.name.message}
@@ -231,7 +231,7 @@ export default function QuoteRequestModal({
                   {errors.email && (
                     <p
                       id="email-error"
-                      className="mt-1 text-sm text-error"
+                      className="text-error mt-1 text-sm"
                       role="alert"
                     >
                       {errors.email.message}
@@ -257,7 +257,7 @@ export default function QuoteRequestModal({
                   {errors.phone && (
                     <p
                       id="phone-error"
-                      className="mt-1 text-sm text-error"
+                      className="text-error mt-1 text-sm"
                       role="alert"
                     >
                       {errors.phone.message}
@@ -294,7 +294,7 @@ export default function QuoteRequestModal({
                   {errors.service && (
                     <p
                       id="service-error"
-                      className="mt-1 text-sm text-error"
+                      className="text-error mt-1 text-sm"
                       role="alert"
                     >
                       {errors.service.message}
@@ -322,7 +322,7 @@ export default function QuoteRequestModal({
                   {errors.message && (
                     <p
                       id="message-error"
-                      className="mt-1 text-sm text-error"
+                      className="text-error mt-1 text-sm"
                       role="alert"
                     >
                       {errors.message.message}

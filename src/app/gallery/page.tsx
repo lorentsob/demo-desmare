@@ -1,14 +1,11 @@
-import GallerySection from "@/components/GallerySection";
-import type { Metadata } from "next";
+import GallerySection from '@/components/GallerySection';
+import { generateMetadata } from '@/content/metadata';
 
-export const metadata: Metadata = {
-  title: "Gallery | Desmare",
-  description: "Galleria fotografica dei nostri lavori",
-};
+export const metadata = generateMetadata('gallery');
 
 export default function GalleryPage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <main>
         <GallerySection />
       </main>

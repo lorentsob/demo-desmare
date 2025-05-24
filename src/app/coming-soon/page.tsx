@@ -1,11 +1,7 @@
 import HeroComingSoon from '@/components/HeroComingSoon';
-import type { Metadata } from 'next';
+import { generateMetadata } from '@/content/metadata';
 
-export const metadata: Metadata = {
-  title: 'In Arrivo | Desmare',
-  description:
-    'Desmare - Sito in costruzione. Soluzioni professionali per demolizioni, smaltimento e recupero materiali.',
-};
+export const metadata = generateMetadata('coming-soon');
 
 export default function ComingSoonPage() {
   return <HeroComingSoon />;

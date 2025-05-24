@@ -1,5 +1,6 @@
 'use client';
 
+import { heroContent } from '@/content/hero';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,47 +12,49 @@ export default function Hero() {
 
   return (
     <section
-      className="relative overflow-hidden"
+      className="relative min-h-[calc(100vh-80px)] overflow-hidden py-12 lg:py-0"
       style={{
-        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
       }}
     >
-      <div className="container-custom relative z-10 py-8 sm:py-12">
+      <div className="container-custom relative z-10">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="mb-6 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Soluzioni professionali per{' '}
-              <span className="text-primary">demolizioni</span> e{' '}
-              <span className="text-primary">recupero materiali</span>
+            <h1 className="mb-6 text-balance text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+              {heroContent.title.prefix}{' '}
+              <span className="text-primary">
+                {heroContent.title.highlighted[0]}
+              </span>{' '}
+              e{' '}
+              <span className="text-primary">
+                {heroContent.title.highlighted[1]}
+              </span>
             </h1>
             <p className="mb-8 max-w-lg text-xl text-text-secondary">
-              Affidati a Desmare per servizi di demolizione, smaltimento e
-              recupero rifiuti. La nostra esperienza garantisce sicurezza,
-              efficienza e rispetto dell'ambiente.
+              {heroContent.description}
             </p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <button
                 onClick={() => setIsModalOpen(true)}
                 className="btn btn-primary px-8 py-3 text-lg"
               >
-                Richiedi un preventivo
+                {heroContent.cta.primary}
               </button>
               <Link
                 href="/servizi"
-                className="btn border border-primary/20 px-8 py-3 text-lg transition-colors hover:bg-primary/5"
+                className="btn border border-primary/20 px-8 py-3 text-center text-lg transition-colors hover:bg-primary/5"
               >
-                Scopri i servizi
+                {heroContent.cta.secondary}
               </Link>
             </div>
 
-            <div className="mt-12 flex items-center">
+            {/* <div className="mt-12 flex items-center">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
                   <div
@@ -77,10 +80,10 @@ export default function Hero() {
                   ))}
                 </div>
                 <p className="text-sm text-text-secondary">
-                  Valutazione media 4.9/5 dai nostri clienti
+                  {heroContent.testimonials.text}
                 </p>
               </div>
-            </div>
+            </div> */}
           </motion.div>
 
           <motion.div

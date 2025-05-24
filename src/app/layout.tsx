@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import { metadataConfig } from '@/content/metadata';
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -11,13 +12,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://desmare.it'),
+  metadataBase: new URL(metadataConfig.defaults.baseUrl),
   title: {
-    default: 'Desmare | Professional Demolition and Environmental Services',
-    template: '%s | Desmare',
+    default: metadataConfig.pages.home.title,
+    template: `%s ${metadataConfig.defaults.separator} ${metadataConfig.defaults.siteName}`,
   },
-  description:
-    'Professional demolition, strip-out, and environmental services with a focus on sustainability and regulatory compliance.',
+  description: metadataConfig.defaults.description,
   keywords: [
     'demolition services',
     'strip-out services',
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     'environmental services',
     'asbestos removal',
   ],
-  authors: [{ name: 'Desmare' }],
-  creator: 'Desmare',
-  publisher: 'Desmare',
+  authors: [{ name: metadataConfig.defaults.siteName }],
+  creator: metadataConfig.defaults.siteName,
+  publisher: metadataConfig.defaults.siteName,
   // robots: {
   //   index: true,
   //   follow: true,
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
   // },
   openGraph: {
     type: 'website',
-    locale: 'it_IT',
-    url: 'https://desmare.it',
+    locale: metadataConfig.defaults.locale,
+    url: metadataConfig.defaults.baseUrl,
     title: 'Desmare - Servizi di Demolizione Professionali',
     description:
       'Servizi professionali di demolizione, strip-out e gestione rifiuti con un approccio sostenibile e conforme alle normative.',
-    siteName: 'Desmare',
+    siteName: metadataConfig.defaults.siteName,
   },
   twitter: {
     card: 'summary_large_image',
@@ -55,11 +55,11 @@ export const metadata: Metadata = {
       'Servizi professionali di demolizione, strip-out e gestione rifiuti con un approccio sostenibile e conforme alle normative.',
   },
   alternates: {
-    canonical: 'https://desmare.it',
+    canonical: metadataConfig.defaults.baseUrl,
   },
   other: {
-    'theme-color': '#08A045',
-    'msapplication-TileColor': '#08A045',
+    'theme-color': metadataConfig.defaults.themeColor,
+    'msapplication-TileColor': metadataConfig.defaults.themeColor,
   },
 };
 
@@ -70,6 +70,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="it" className={inter.variable}>
+      <head>
+        <meta name="apple-mobile-web-app-title" content="Desmare" />
+      </head>
       <body className="font-sans">
         <Header />
         <main className="min-h-screen" role="main" id="main-content">

@@ -1,18 +1,8 @@
-import type { Metadata } from "next";
-import ServicesLanding from "@/components/services/ServicesLanding";
+import ServicesLanding from '@/components/services/ServicesLanding';
+import { generateMetadata } from '@/content/metadata';
 
-export const metadata: Metadata = {
-  title: "Servizi | Desmare",
-  description:
-    "Soluzioni complete e chiavi in mano per demolizioni, strip-out e bonifica ambientale. Servizi professionali e sostenibili.",
-};
+export const metadata = generateMetadata('services');
 
-export default function ServiziPage() {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        <ServicesLanding />
-      </main>
-    </div>
-  );
+export default function ServicesPage() {
+  return <ServicesLanding />;
 }
