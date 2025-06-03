@@ -61,11 +61,6 @@ export default function ContactSection() {
           onClose={() => setIsModalOpen(false)}
         />
       </div>
-
-      <QuoteRequestModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 }
