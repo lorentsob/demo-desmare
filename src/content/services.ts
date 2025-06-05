@@ -1,8 +1,8 @@
 export const servicesContent = {
   landing: {
-    title: 'Soluzioni complete per demolizione e gestione ambientale',
+    title: 'I nostri servizi',
     subtitle:
-      'Offriamo servizi chiavi in mano, dalla demolizione alla gestione dei rifiuti, con un unico referente per tutto il progetto.',
+      'Demolizione, movimento terra e gestione rifiuti, con un unico referente per tutto il progetto.',
     categories: [
       {
         id: 'demolizioni',
@@ -24,7 +24,7 @@ export const servicesContent = {
         id: 'strip-out',
         title: 'Strip-out',
         description:
-          "Eseguiamo lavori precisi di strip-out per preparare gli spazi alla ristrutturazione o riqualificazione, minimizzando l'impatto sulle strutture adiacenti e garantendo la massima efficienza.",
+          "Eseguiamo servizi di strip-out per preparare gli spazi alla ristrutturazione o riqualificazione, minimizzando l'impatto sulle strutture adiacenti e garantendo la massima efficienza.",
         image: '/images/horizontal-2.jpg',
         link: '/servizi/strip-out',
         features: [

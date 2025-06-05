@@ -27,7 +27,7 @@ export default function ServicesLanding() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-6 text-4xl font-bold md:text-5xl"
+            className="mb-6 text-balance text-4xl font-bold md:text-5xl"
           >
             {servicesContent.landing.title}
           </motion.h1>
@@ -35,7 +35,7 @@ export default function ServicesLanding() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-text-secondary"
+            className="text-balance text-2xl text-text-secondary"
           >
             {servicesContent.landing.subtitle}
           </motion.p>

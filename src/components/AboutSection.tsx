@@ -17,10 +17,11 @@ export default function AboutSection() {
           <div>
             <h2 className="mb-6 text-3xl font-bold">La Nostra Missione</h2>
             <p className="mb-6 text-lg text-text-secondary">
-              In Desmare crediamo che ogni progetto di demolizione sia
-              un'opportunità per recuperare materiali preziosi e ridurre
-              l'impatto ambientale. La nostra missione è fornire servizi
-              professionali che uniscono efficienza, sicurezza e sostenibilità.
+              Desmare vuole essere il partner affidabile di imprese e pubbliche
+              amministrazioni, liberando il cliente da complessità operative,
+              normative e ambientali. Garantiamo cantieri sicuri, materiali
+              valorizzati e soluzioni complete ed efficienti, sempre conformi
+              alle normative vigenti.
             </p>
             <p className="text-lg text-text-secondary">
               Ci impegniamo a garantire che i materiali di scarto vengano
@@ -66,6 +67,29 @@ export default function AboutSection() {
                   />
                 </svg>
                 <div>
+                  <h3 className="text-lg font-bold">Professionalità</h3>
+                  <p className="text-text-secondary">
+                    Il nostro team è composto da professionisti altamente
+                    qualificati e dedicati alla soddisfazione del cliente.
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-primary"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <div>
                   <h3 className="text-lg font-bold">Sostenibilità</h3>
                   <p className="text-text-secondary">
                     Adottiamo pratiche sostenibili in tutti i nostri progetti,
@@ -89,11 +113,9 @@ export default function AboutSection() {
                   />
                 </svg>
                 <div>
-                  <h3 className="text-lg font-bold">Sicurezza</h3>
+                  <h3 className="text-lg font-bold">Trasparenza</h3>
                   <p className="text-text-secondary">
-                    La sicurezza è la nostra priorità assoluta. Seguiamo
-                    rigorosamente tutte le normative e adottiamo procedure
-                    avanzate.
+                    Preventivi chiari e report dettagliati e verificabili.
                   </p>
                 </div>
               </li>
@@ -113,33 +135,10 @@ export default function AboutSection() {
                   />
                 </svg>
                 <div>
-                  <h3 className="text-lg font-bold">Innovazione</h3>
+                  <h3 className="text-lg font-bold">Affidabilità</h3>
                   <p className="text-text-secondary">
-                    Utilizziamo tecnologie e metodologie all'avanguardia per
-                    garantire risultati ottimali in ogni progetto.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-primary"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                <div>
-                  <h3 className="text-lg font-bold">Professionalità</h3>
-                  <p className="text-text-secondary">
-                    Il nostro team è composto da professionisti altamente
-                    qualificati e dedicati alla soddisfazione del cliente.
+                     Rispettiamo sempre impegni e normative, con puntualità e
+                    rigore.
                   </p>
                 </div>
               </li>
@@ -150,11 +149,19 @@ export default function AboutSection() {
         <div className="rounded-2xl bg-primary/5 p-8 md:p-12">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="mb-6 text-3xl font-bold">Il Nostro Approccio</h2>
-            <p className="mb-8 text-lg text-text-secondary">
-              Desmare si distingue per un approccio personalizzato ad ogni
+            <p className="mb-8 text-balance text-lg text-text-secondary">
+              Desmare si distingue per un approccio{' '}
+              <span className="font-bold">chiavi in mano</span> e{' '}
+              <span className="font-bold">personalizzato</span> ad ogni
               progetto. Comprendiamo che ogni lavoro ha esigenze uniche, e
               offriamo soluzioni su misura che si adattano perfettamente alle
-              vostre necessità specifiche.
+              vostre necessità specifiche.{' '}
+            </p>{' '}
+            <p className="mb-8 text-balance text-lg text-text-secondary">
+              {' '}
+              Ci proponiamo come{' '}
+              <span className="font-bold">general contractor</span>: un unico
+              referente che coordina una rete locale di tecnici specializzati.
             </p>
             <ContactButton />
           </div>
