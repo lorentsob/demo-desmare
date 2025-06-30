@@ -40,7 +40,7 @@ type ServiceData = {
   benefits: Benefit[];
   process: ProcessStep[];
   categories: ServiceCategory[];
-  certifications: string[];
+  certifications?: string[];
   cta: CTA;
 };
 
