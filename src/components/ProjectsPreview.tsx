@@ -5,15 +5,16 @@ import Link from 'next/link';
 
 // Progetto in evidenza
 const featuredProject = {
-  title: 'Demolizione Complesso Industriale',
+  title: 'Strip-out Controllato nel Centro di Terni',
   description:
-    'Completa demolizione e bonifica di un complesso industriale di 5000mq, con recupero del 85% dei materiali.',
-  image: '/images/horizontal-1.jpg',
-  category: 'demolizione',
+    'Strip-out controllato nel centro della città di Terni per conto del cliente Superconti. Intervento di precisione in area urbana densamente popolata con minimo impatto sui cittadini.',
+  image: '/images/horizontal-2.jpg',
+  category: 'strip-out',
+  client: 'Superconti',
   stats: [
-    { label: 'Superficie', value: '5000 mq' },
-    { label: 'Durata', value: '3 mesi' },
-    { label: 'Recupero', value: '85%' },
+    { label: 'Cliente', value: 'Superconti' },
+    { label: 'Durata', value: '2 mesi' },
+    { label: 'Zona', value: 'Centro Terni' },
   ],
 };
 
@@ -47,9 +48,11 @@ export default function ProjectsPreview() {
               <span className="rounded-full bg-primary/20 px-3 py-1 text-sm text-primary">
                 {featuredProject.category === 'demolizione'
                   ? 'Demolizione'
-                  : featuredProject.category === 'smaltimento'
-                    ? 'Smaltimento'
-                    : 'Recupero'}
+                  : featuredProject.category === 'strip-out'
+                    ? 'Strip-out'
+                    : featuredProject.category === 'smaltimento'
+                      ? 'Smaltimento'
+                      : 'Recupero'}
               </span>
             </div>
 

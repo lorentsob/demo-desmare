@@ -17,9 +17,10 @@ const services = [
     image: '/images/horizontal-2.jpg',
   },
   {
-    id: 'rifiuti-pericolosi',
-    title: 'Gestione di rifiuti pericolosi',
-    description: 'Gestione e smaltimento di rifiuti pericolosi.',
+    id: 'bonifiche',
+    title: 'Bonifiche ambientali',
+    description:
+      'Interventi di bonifica e messa in sicurezza di siti contaminati o dismessi.',
     image: '/images/horizontal-3.jpg',
   },
 ];

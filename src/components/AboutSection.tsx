@@ -8,16 +8,25 @@ export default function AboutSection() {
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h1 className="mb-6 text-4xl font-bold md:text-5xl">Chi Siamo</h1>
           <p className="text-xl text-text-secondary">
-            Desmare è una giovane azienda specializzata in demolizioni,
-            smaltimento di rifiuti e recupero materiali.
+            De.sma.re è un'azienda specializzata in demolizioni,
+            smaltimento di rifiuti e recupero materiali. Una tradizione 
+            familiare nel settore del recupero che affonda le radici 
+            in provincia di Arezzo.
           </p>
         </div>
 
         <div className="mb-24 grid items-center gap-12 md:grid-cols-2">
           <div>
-            <h2 className="mb-6 text-3xl font-bold">La Nostra Missione</h2>
+            <h2 className="mb-6 text-3xl font-bold">Le Nostre Origini</h2>
             <p className="mb-6 text-lg text-text-secondary">
-              Desmare vuole essere il partner affidabile di imprese e pubbliche
+              La nostra esperienza nel settore del recupero materiali nasce da una 
+              tradizione familiare che si è sviluppata per generazioni in provincia 
+              di Arezzo, dove la famiglia gestiva un impianto di recupero ferro. 
+              Questa eredità ci ha trasmesso la passione per il recupero e la 
+              valorizzazione dei materiali.
+            </p>
+            <p className="mb-6 text-lg text-text-secondary">
+              Oggi De.sma.re vuole essere il partner affidabile di imprese e pubbliche
               amministrazioni, liberando il cliente da complessità operative,
               normative e ambientali. Garantiamo cantieri sicuri, materiali
               valorizzati e soluzioni complete ed efficienti, sempre conformi
@@ -151,7 +160,7 @@ export default function AboutSection() {
             <h2 className="mb-6 text-3xl font-bold">Il Nostro Approccio</h2>
             <p className="mb-8 text-balance text-lg text-text-secondary">
               Desmare si distingue per un approccio{' '}
-              <span className="font-bold">chiavi in mano</span> e{' '}
+              <span className="font-bold">completo</span> e{' '}
               <span className="font-bold">personalizzato</span> ad ogni
               progetto. Comprendiamo che ogni lavoro ha esigenze uniche, e
               offriamo soluzioni su misura che si adattano perfettamente alle

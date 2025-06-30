@@ -11,7 +11,7 @@ import QuoteRequestModal from './QuoteRequestModal';
 const serviceSubmenuItems = [
   { name: 'Demolizioni', href: '/servizi/demolizioni' },
   { name: 'Strip-out', href: '/servizi/strip-out' },
-  { name: 'Rifiuti Pericolosi', href: '/servizi/rifiuti-pericolosi' },
+  { name: 'Bonifiche', href: '/servizi/bonifiche' },
 ];
 
 export default function Header() {

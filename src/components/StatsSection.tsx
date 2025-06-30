@@ -4,24 +4,19 @@ import { motion } from 'framer-motion';
 
 const stats = [
   {
-    value: '10+',
+    value: '30',
     label: 'Anni di esperienza',
     description: 'Nel settore delle demolizioni e del recupero materiali',
   },
   {
-    value: '250+',
+    value: '100+',
     label: 'Progetti completati',
     description: 'In tutta Italia per aziende e privati',
   },
   {
-    value: '85%',
-    label: 'Tasso di recupero',
-    description: 'Dei materiali dalle nostre demolizioni',
-  },
-  {
     value: '30+',
     label: 'Professionisti',
-    description: 'Che lavorano nella nostra squadra',
+    description: 'Che collaborano con la nostra rete',
   },
 ];
 
@@ -51,7 +46,7 @@ export default function StatsSection() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
