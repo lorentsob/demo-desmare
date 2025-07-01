@@ -58,8 +58,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Email per l'amministratore (lorenzo.boschi@isiadesign.fi.it)
-    const adminEmailAddress = 'lorenzo.boschi@isiadesign.fi.it';
+    // Email per l'amministratore (info@desmare.it)
+    const adminEmailAddress = 'info@desmare.it';
     console.log(
       "API Route: Invio email di notifica all'amministratore:",
       adminEmailAddress,

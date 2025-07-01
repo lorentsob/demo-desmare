@@ -10,7 +10,7 @@ const projects = [
     description: 'Demolizione controllata di un ex sito industriale con recupero dell\'85% dei materiali e corretta gestione dei rifiuti speciali.',
     category: 'demolizione',
     location: 'Milano',
-    image: '/images/horizontal-1.jpg'
+    image: '/images/img/abandoned-industrial-site-old-machinery.jpg'
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const projects = [
     description: 'Gestione completa dei rifiuti edilizi per un grande cantiere residenziale, con selezione e differenziazione accurata dei materiali.',
     category: 'smaltimento',
     location: 'Roma',
-    image: '/images/horizontal-2.jpg'
+    image: '/images/img/waste-loading-into-dumpster-truck.jpg'
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const projects = [
     description: 'Recupero di materiali pregiati da un edificio storico durante la ristrutturazione, preservando elementi di valore architettonico.',
     category: 'recupero',
     location: 'Firenze',
-    image: '/images/horizontal-3.jpg'
+    image: '/images/img/roof-deconstruction-wood-shingles-and-rafters.jpg'
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const projects = [
     description: 'Demolizione selettiva di un\'area commerciale dismessa con attenzione particolare alla sicurezza e all\'impatto acustico.',
     category: 'demolizione',
     location: 'Torino',
-    image: '/images/horizontal-4.jpg'
+    image: '/images/img/partially-destroyed-residential-building.jpg'
   }
 ]
 

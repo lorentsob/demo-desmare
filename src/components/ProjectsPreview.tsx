@@ -1,20 +1,19 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 
 // Progetto in evidenza
 const featuredProject = {
   title: 'Strip-out Controllato nel Centro di Terni',
   description:
     'Strip-out controllato nel centro della città di Terni per conto del cliente Superconti. Intervento di precisione in area urbana densamente popolata con minimo impatto sui cittadini.',
-  image: '/images/horizontal-2.jpg',
+  image: '/images/img/stripout-terni.jpeg',
   category: 'strip-out',
   client: 'Superconti',
   stats: [
     { label: 'Cliente', value: 'Superconti' },
     { label: 'Durata', value: '2 mesi' },
-    { label: 'Zona', value: 'Centro Terni' },
+    { label: 'Dove', value: 'Centro di Terni' },
   ],
 };
 
@@ -76,7 +75,7 @@ export default function ProjectsPreview() {
           </div>
         </div>
 
-        <div className="text-center">
+        {/* <div className="text-center">
           <Link
             href="/progetti"
             className="btn btn-primary inline-flex items-center"
@@ -95,7 +94,7 @@ export default function ProjectsPreview() {
               />
             </svg>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

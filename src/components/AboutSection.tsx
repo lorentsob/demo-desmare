@@ -30,7 +30,9 @@ export default function AboutSection() {
               amministrazioni, liberando il cliente da complessità operative,
               normative e ambientali. Garantiamo cantieri sicuri, materiali
               valorizzati e soluzioni complete ed efficienti, sempre conformi
-              alle normative vigenti.
+              alle normative vigenti. Quando possibile, effettuiamo anche operazioni
+              di smontaggio e acquisto di materiali industriali, offrendo un
+              servizio di recupero valore che si inserisce nella logica dell'economia circolare.
             </p>
             <p className="text-lg text-text-secondary">
               Ci impegniamo a garantire che i materiali di scarto vengano
@@ -40,7 +42,7 @@ export default function AboutSection() {
           </div>
           <div className="relative h-[400px] overflow-hidden rounded-lg shadow-xl">
             <Image
-              src="/images/vertical-1.jpg"
+              src="/images/img/abandoned-factory-interior-structure.jpg.jpg"
               alt="Team Desmare"
               fill
               className="object-cover"
@@ -51,7 +53,7 @@ export default function AboutSection() {
         <div className="mb-24 grid items-center gap-12 md:grid-cols-2">
           <div className="relative order-1 h-[400px] overflow-hidden rounded-lg shadow-xl md:order-none">
             <Image
-              src="/images/vertical-2.jpg"
+              src="/images/img/facade-dismantling-workers-metal-cutting.jpg"
               alt="I nostri valori"
               fill
               className="object-cover"

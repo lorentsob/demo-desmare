@@ -17,7 +17,7 @@ const services = [
       'Rimozione di strutture in cemento armato',
       'Bonifica pre-demolizione'
     ],
-    image: '/images/horizontal-1.jpg'
+    image: '/images/img/interior-structural-demolition-rebars.jpg'
   },
   {
     id: 'smaltimento',
@@ -31,7 +31,7 @@ const services = [
       'Documentazione completa di smaltimento',
       'Consulenza per la gestione dei rifiuti'
     ],
-    image: '/images/horizontal-2.jpg'
+    image: '/images/img/construction-debris-dumpster-residential.jpg.jpg'
   },
   {
     id: 'recupero',
@@ -45,7 +45,7 @@ const services = [
       'Valorizzazione dei rifiuti',
       'Soluzioni personalizzate di recupero'
     ],
-    image: '/images/horizontal-3.jpg'
+    image: '/images/img/metal-scrap-after-industrial-demolition.jpg'
   }
 ]
 

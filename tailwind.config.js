@@ -14,10 +14,11 @@ module.exports = {
           200: '#9AD6B5',
           300: '#71C799',
           400: '#53BA85',
-          DEFAULT: '#08A045', // Main brand green - Used for primary buttons and links
+          500: '#08A045',
           600: '#079140',
-          700: '#067F38',
-          800: '#056D30',
+          DEFAULT: '#067F38',
+          700: '#056D30',
+          //  '#034F23', // Main brand green - Darker green for better contrast
           900: '#034F23',
         },
 
@@ -67,9 +68,9 @@ module.exports = {
           text: '#1A2634',
           'text-secondary': 'rgba(26, 38, 52, 0.75)',
           'text-light': '#F8F9FA',
-          accent: '#08A045', // Updated to match primary
+          accent: '#034F23', // Updated to match new primary
           border: 'rgba(26, 38, 52, 0.08)',
-          'accent-transparent': 'rgba(8, 160, 69, 0.08)', // Updated to match primary
+          'accent-transparent': 'rgba(3, 79, 35, 0.08)', // Updated to match new primary
         },
 
         bg: {
@@ -83,15 +84,15 @@ module.exports = {
           border: 'rgba(26, 38, 52, 0.08)', // Standard border color
           input: '#F8F9FA', // Input background
           'input-border': 'rgba(26, 38, 52, 0.12)', // Input border color
-          'focus-ring': 'rgba(8, 160, 69, 0.2)', // Focus ring color (based on primary)
-          'hover-bg': 'rgba(8, 160, 69, 0.05)', // Hover background (based on primary)
+          'focus-ring': 'rgba(3, 79, 35, 0.2)', // Focus ring color (based on primary)
+          'hover-bg': 'rgba(3, 79, 35, 0.05)', // Hover background (based on primary)
           'card-bg': '#FFFFFF', // Card background
           'section-bg': '#F8F9FA', // Section background
         },
 
         // Status colors - For notifications and alerts
         status: {
-          success: '#08A045', // Success messages (matches primary)
+          success: '#034F23', // Success messages (matches primary)
           warning: '#FF9505', // Warning messages (uses accent-color)
           error: '#D32F2F', // Error messages
           info: '#2196F3', // Information messages (matches secondary)
@@ -115,14 +116,15 @@ module.exports = {
         card: '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
         section:
           '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
-        button: '0 2px 4px 0 rgba(8, 160, 69, 0.15)', // Updated to use primary color
+        button: '0 2px 4px 0 rgba(3, 79, 35, 0.15)', // Updated to use primary color
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-primary': 'linear-gradient(135deg, #08A045 0%, #067F38 100%)', // Updated to use primary color
+        'gradient-primary': 'linear-gradient(135deg, #034F23 0%, #067F38 100%)', // Updated to use primary color
         'gradient-primary-light':
-          'linear-gradient(135deg, rgba(8, 160, 69, 0.1) 0%, rgba(6, 127, 56, 0.05) 100%)', // Updated to use primary color
-        'gradient-accent-color': 'linear-gradient(135deg, #FF9505 0%, #E07A00 100%)', // Renamed to keep the gradient but not have it used by default
+          'linear-gradient(135deg, rgba(3, 79, 35, 0.1) 0%, rgba(6, 127, 56, 0.05) 100%)', // Updated to use primary color
+        'gradient-accent-color':
+          'linear-gradient(135deg, #FF9505 0%, #E07A00 100%)', // Renamed to keep the gradient but not have it used by default
       },
     },
   },
