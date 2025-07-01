@@ -8,10 +8,12 @@ export default function AboutSection() {
         <div className="mx-auto mb-16 max-w-3xl text-center">
           <h1 className="mb-6 text-4xl font-bold md:text-5xl">Chi Siamo</h1>
           <p className="text-xl text-text-secondary">
-            De.sma.re è un'azienda specializzata in demolizioni,
-            smaltimento di rifiuti e recupero materiali. Una tradizione 
-            familiare nel settore del recupero che affonda le radici 
-            in provincia di Arezzo.
+            <span className="font-semibold text-primary">De.sma.re</span> è un'azienda specializzata in{' '}
+            <span className="font-semibold">demolizioni</span>,{' '}
+            <span className="font-semibold">smaltimento rifiuti</span> e{' '}
+            <span className="font-semibold">recupero materiali</span>. Una{' '}
+            <span className="font-medium">tradizione familiare</span> nel settore
+            che affonda le radici in <span className="font-medium">provincia di Arezzo</span>.
           </p>
         </div>
 
@@ -19,25 +21,19 @@ export default function AboutSection() {
           <div>
             <h2 className="mb-6 text-3xl font-bold">Le Nostre Origini</h2>
             <p className="mb-6 text-lg text-text-secondary">
-              La nostra esperienza nel settore del recupero materiali nasce da una 
-              tradizione familiare che si è sviluppata per generazioni in provincia 
-              di Arezzo, dove la famiglia gestiva un impianto di recupero ferro. 
-              Questa eredità ci ha trasmesso la passione per il recupero e la 
-              valorizzazione dei materiali.
+              La nostra esperienza nasce da una{' '}
+              <span className="font-semibold">tradizione familiare</span> sviluppatasi per generazioni
+              in provincia di Arezzo, dove gestivamo un{' '}
+              <span className="font-medium">impianto di recupero ferro</span>. Questa eredità ci ha
+              trasmesso la passione per il <span className="font-medium">recupero e valorizzazione dei materiali</span>.
             </p>
             <p className="mb-6 text-lg text-text-secondary">
-              Oggi De.sma.re vuole essere il partner affidabile di imprese e pubbliche
-              amministrazioni, liberando il cliente da complessità operative,
-              normative e ambientali. Garantiamo cantieri sicuri, materiali
-              valorizzati e soluzioni complete ed efficienti, sempre conformi
-              alle normative vigenti. Quando possibile, effettuiamo anche operazioni
-              di smontaggio e acquisto di materiali industriali, offrendo un
-              servizio di recupero valore che si inserisce nella logica dell'economia circolare.
-            </p>
-            <p className="text-lg text-text-secondary">
-              Ci impegniamo a garantire che i materiali di scarto vengano
-              gestiti in modo responsabile, massimizzando il riutilizzo e il
-              riciclo e minimizzando i rifiuti destinati alle discariche.
+              Oggi <span className="font-semibold text-primary">De.sma.re</span> è il{' '}
+              <span className="font-semibold">partner affidabile</span> di imprese e pubbliche amministrazioni.
+              Garantiamo <span className="font-medium">cantieri sicuri</span> e{' '}
+              <span className="font-medium">soluzioni complete</span>, sempre conformi alle normative.
+              Offriamo anche <span className="font-medium">smontaggio e acquisto materiali industriali</span>,
+              seguendo i principi dell'<span className="font-semibold">economia circolare</span>.
             </p>
           </div>
           <div className="relative h-[400px] overflow-hidden rounded-lg shadow-xl">
