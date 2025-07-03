@@ -91,7 +91,7 @@ export default function HeroComingSoon() {
               <div className="space-y-4">
                 <div className="rounded-2xl overflow-hidden shadow-xl h-40 sm:h-64 relative">
                   <Image
-                    src="/images/horizontal-1.jpg"
+                    src="/images/img/demolition-excavator-action.jpg"
                     alt="Servizi di demolizione"
                     fill
                     className="object-cover"
@@ -99,7 +99,7 @@ export default function HeroComingSoon() {
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-xl h-40 sm:h-48 relative">
                   <Image
-                    src="/images/horizontal-4.jpg"
+                    src="/images/img/metal-scrap-after-industrial-demolition.jpg"
                     alt="Recupero materiali"
                     fill
                     className="object-cover"
@@ -109,7 +109,7 @@ export default function HeroComingSoon() {
               <div className="space-y-4 mt-8">
                 <div className="rounded-2xl overflow-hidden shadow-xl h-40 sm:h-48 relative">
                   <Image
-                    src="/images/horizontal-2.jpg"
+                    src="/images/img/waste-loading-into-dumpster-truck.jpg"
                     alt="Smaltimento rifiuti"
                     fill
                     className="object-cover"
@@ -117,7 +117,7 @@ export default function HeroComingSoon() {
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-xl h-40 sm:h-64 relative">
                   <Image
-                    src="/images/horizontal-3.jpg"
+                    src="/images/img/construction-site-drone-view-earthmoving.jpg"
                     alt="Attrezzature specializzate"
                     fill
                     className="object-cover"

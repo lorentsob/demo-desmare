@@ -8,19 +8,20 @@ const services = [
     title: 'Demolizioni',
     description:
       'Servizi completi di demolizione per strutture civili e industriali.',
-    image: '/images/horizontal-1.jpg',
+    image: '/images/img/demolition-excavator-action.jpg',
   },
   {
     id: 'strip-out',
     title: 'Strip-out',
     description: 'Gestione professionale dei rifiuti edili e speciali.',
-    image: '/images/horizontal-2.jpg',
+    image: '/images/img/facade-dismantling-workers-metal-cutting.jpg',
   },
   {
-    id: 'rifiuti-pericolosi',
-    title: 'Gestione di rifiuti pericolosi',
-    description: 'Gestione e smaltimento di rifiuti pericolosi.',
-    image: '/images/horizontal-3.jpg',
+    id: 'bonifiche',
+    title: 'Bonifiche ambientali',
+    description:
+      'Interventi di bonifica e messa in sicurezza di siti contaminati o dismessi.',
+    image: '/images/img/environmental-cleanup.jpg',
   },
 ];
 

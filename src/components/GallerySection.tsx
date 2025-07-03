@@ -3,52 +3,52 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-// Sample gallery images (using the available images for now)
+// Gallery images showcasing construction/demolition work
 const galleryImages = [
   {
     id: 1,
-    src: '/images/horizontal-1.jpg',
-    alt: 'Demolizione struttura',
+    src: '/images/img/demolition-excavator-action.jpg',
+    alt: 'Escavatore in azione durante demolizione',
     category: 'demolizioni',
     width: 1200,
     height: 800,
   },
   {
     id: 2,
-    src: '/images/vertical-1.jpg',
-    alt: 'Recupero materiali',
+    src: '/images/img/abandoned-factory-interior-structure.jpg.jpg',
+    alt: 'Interno di stabilimento industriale dismesso',
     category: 'recupero',
     width: 800,
     height: 1200,
   },
   {
     id: 3,
-    src: '/images/horizontal-2.jpg',
-    alt: 'Smaltimento rifiuti edilizi',
+    src: '/images/img/construction-debris-dumpster-residential.jpg.jpg',
+    alt: 'Gestione detriti edilizi residenziali',
     category: 'smaltimento',
     width: 1200,
     height: 800,
   },
   {
     id: 4,
-    src: '/images/vertical-2.jpg',
-    alt: 'Attrezzature specializzate',
+    src: '/images/img/facade-dismantling-workers-metal-cutting.jpg',
+    alt: 'Smantellamento facciata con taglio metalli',
     category: 'demolizioni',
     width: 800,
     height: 1200,
   },
   {
     id: 5,
-    src: '/images/horizontal-3.jpg',
-    alt: 'Cantiere di demolizione',
+    src: '/images/img/interior-structural-demolition-rebars.jpg',
+    alt: 'Demolizione strutturale interna con ferri',
     category: 'demolizioni',
     width: 1200,
     height: 800,
   },
   {
     id: 6,
-    src: '/images/horizontal-4.jpg',
-    alt: 'Materiali recuperati',
+    src: '/images/img/metal-scrap-after-industrial-demolition.jpg',
+    alt: 'Rottami metallici da demolizione industriale',
     category: 'recupero',
     width: 1200,
     height: 800,

@@ -34,7 +34,7 @@ export default function HomePage() {
         <AboutPreview />
         <ProjectsPreview />
         <ClientLogosSection />
-        <TestimonialsSection />
+        {/* <TestimonialsSection /> */}
         {/* <GalleryPreview /> */}
         <CTASection />
         {/* <CTAPros /> */}

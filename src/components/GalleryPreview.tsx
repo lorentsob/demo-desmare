@@ -4,27 +4,27 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
-// Sample gallery images (using the available images for now)
+// Gallery preview images showcasing different aspects of construction/demolition work
 const galleryImages = [
   {
     id: 1,
-    src: '/images/horizontal-1.jpg',
-    alt: 'Demolizione struttura'
+    src: '/images/img/construction-site-drone-view-earthmoving.jpg',
+    alt: 'Vista aerea cantiere movimento terra'
   },
   {
     id: 2,
-    src: '/images/vertical-1.jpg',
-    alt: 'Recupero materiali'
+    src: '/images/img/abandoned-industrial-machine-hall-large-space.png',
+    alt: 'Capannone industriale dismesso'
   },
   {
     id: 3,
-    src: '/images/horizontal-2.jpg',
-    alt: 'Smaltimento rifiuti edilizi'
+    src: '/images/img/demolition-excavator-action.jpg',
+    alt: 'Escavatore in azione'
   },
   {
     id: 4,
-    src: '/images/horizontal-3.jpg',
-    alt: 'Cantiere di demolizione'
+    src: '/images/img/facade-dismantling-workers-metal-cutting.jpg',
+    alt: 'Smantellamento facciata'
   }
 ]
 

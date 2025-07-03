@@ -21,9 +21,9 @@ export default function Footer() {
             <Link
               href="/"
               className="mb-6 inline-block text-2xl font-bold tracking-tight"
-              aria-label="Desmare - Vai alla home page"
+              aria-label="De.sma.re - Vai alla home page"
             >
-              Desmare
+              De.sma.re
             </Link>
             <p className="mt-4 max-w-xs text-text-secondary">
               Soluzioni professionali per demolizioni, smaltimento e recupero
@@ -55,15 +55,6 @@ export default function Footer() {
                   Collabora con noi
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/servizi"
-                  className="text-text-secondary transition-colors hover:text-text"
-                >
-                  Certificazioni
-                </Link>
-              </li>
-              <li></li>
             </ul>
           </div>
 
@@ -158,10 +149,9 @@ export default function Footer() {
 
         <div className="flex flex-col justify-between border-t border-white/10 pt-8 md:flex-row md:items-center">
           <div className="text-sm text-text-secondary">
-            © {new Date().getFullYear()} Desmare Srl. Tutti i diritti
-            riservati. <br /> {`${contact.address}`}, P.IVA: {`${contact.piva}`}
-            , R.E.A.: {`${contact.rea}`} <br /> Capitale Sociale:{' '}
-            {`${contact.capitaleSociale}`}, PEC:{' '}
+            © {new Date().getFullYear()} De.sma.re Recycling service di Antonio
+            Boschi. Tutti i diritti riservati. <br /> {`${contact.address}`},
+            P.IVA: {`${contact.piva}`}, PEC:{' '}
             <a
               href={`mailto:${contact.pec}`}
               className="text-text-secondary transition-colors hover:text-primary"

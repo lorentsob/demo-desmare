@@ -1,12 +1,12 @@
 export const servicesContent = {
   landing: {
-    title: 'Soluzioni complete per demolizione e gestione ambientale',
+    title: 'I nostri servizi',
     subtitle:
-      'Offriamo servizi chiavi in mano, dalla demolizione alla gestione dei rifiuti, con un unico referente per tutto il progetto.',
+      'Demolizione, movimento terra e gestione rifiuti, con un unico referente per tutto il progetto.',
     categories: [
       {
         id: 'demolizioni',
-        title: 'Demolizioni chiavi in mano',
+        title: 'Demolizioni complete',
         description:
           "Servizi completi di demolizione per qualsiasi struttura con un unico referente, dalla pianificazione alla consegna del sito. Gestiamo l'intero processo eliminando complessità e stress per il cliente.",
         image: '/images/horizontal-1.jpg',
@@ -24,7 +24,7 @@ export const servicesContent = {
         id: 'strip-out',
         title: 'Strip-out',
         description:
-          "Eseguiamo lavori precisi di strip-out per preparare gli spazi alla ristrutturazione o riqualificazione, minimizzando l'impatto sulle strutture adiacenti e garantendo la massima efficienza.",
+          "Eseguiamo servizi di strip-out per preparare gli spazi alla ristrutturazione o riqualificazione, minimizzando l'impatto sulle strutture adiacenti e garantendo la massima efficienza.",
         image: '/images/horizontal-2.jpg',
         link: '/servizi/strip-out',
         features: [
@@ -33,19 +33,19 @@ export const servicesContent = {
           'Minimizzazione dei disturbi',
           'Preservazione degli elementi da mantenere',
           'Recupero di materiali riutilizzabili',
-          'Pulizia completa post-intervento',
+          'Consegna area completata',
         ],
       },
       {
-        id: 'rifiuti-pericolosi',
-        title: 'Rifiuti pericolosi e bonifica ambientale',
+        id: 'bonifiche',
+        title: 'Bonifiche ambientali',
         description:
-          "Ci occupiamo della gestione sicura e conforme di rifiuti pericolosi, incluso l'amianto, con un focus sulla sicurezza, la conformità normativa e la tutela dell'ambiente.",
+          "Ci occupiamo di bonifiche ambientali e gestione sicura di materiali speciali, incluso l'amianto, con un focus sulla sicurezza, la conformità normativa e la tutela dell'ambiente.",
         image: '/images/horizontal-3.jpg',
-        link: '/servizi/rifiuti-pericolosi',
+        link: '/servizi/bonifiche',
         features: [
           'Bonifica amianto',
-          'Gestione rifiuti pericolosi',
+          'Gestione materiali speciali',
           'Analisi e caratterizzazione',
           'Conformità normativa',
           'Certificazioni complete',
@@ -57,7 +57,7 @@ export const servicesContent = {
   detail: {
     demolizioni: {
       id: 'demolizioni',
-      title: 'Demolizioni chiavi in mano',
+      title: 'Demolizioni complete',
       subtitle: 'Soluzioni complete con un unico referente',
       heroImage: '/images/horizontal-1.jpg',
       description:
@@ -113,12 +113,6 @@ export const servicesContent = {
           description:
             'Separazione, caratterizzazione e smaltimento o recupero dei materiali secondo le normative',
         },
-        {
-          step: 5,
-          title: 'Movimento terra e pulizia',
-          description:
-            "Preparazione del terreno per la fase successiva del progetto e pulizia completa dell'area",
-        },
       ],
       categories: [
         {
@@ -140,13 +134,13 @@ export const servicesContent = {
           image: '/images/horizontal-3.jpg',
         },
       ],
-      certifications: [
-        'Albo Nazionale Gestori Ambientali',
-        'Categoria 8 - Intermediazione rifiuti',
-        'ISO 9001 - Gestione Qualità',
-        'ISO 14001 - Gestione Ambientale',
-        'ISO 45001 - Sicurezza sul lavoro',
-      ],
+      // certifications: [
+      //   'Albo Nazionale Gestori Ambientali',
+      //   'Categoria 8 - Intermediazione rifiuti',
+      //   'ISO 9001 - Gestione Qualità',
+      //   'ISO 14001 - Gestione Ambientale',
+      //   'ISO 45001 - Sicurezza sul lavoro',
+      // ],
       cta: {
         title: 'Hai un progetto di demolizione?',
         description:
@@ -181,9 +175,9 @@ export const servicesContent = {
           icon: 'recycle',
         },
         {
-          title: 'Pulizia professionale',
-          description: "Pulizia completa dell'area al termine dei lavori",
-          icon: 'clean',
+          title: 'Consegna professionale',
+          description: "Consegna dell'area completata e pronta all'uso",
+          icon: 'check',
         },
       ],
       process: [
@@ -211,12 +205,6 @@ export const servicesContent = {
           description:
             'Separazione e smaltimento dei materiali secondo le normative',
         },
-        {
-          step: 5,
-          title: 'Pulizia e consegna',
-          description:
-            "Pulizia completa dell'area e consegna del sito pronto per la ristrutturazione",
-        },
       ],
       categories: [
         {
@@ -238,13 +226,13 @@ export const servicesContent = {
           image: '/images/horizontal-1.jpg',
         },
       ],
-      certifications: [
-        'Albo Nazionale Gestori Ambientali',
-        'Categoria 8 - Intermediazione rifiuti',
-        'ISO 9001 - Gestione Qualità',
-        'ISO 14001 - Gestione Ambientale',
-        'ISO 45001 - Sicurezza sul lavoro',
-      ],
+      // certifications: [
+      //   'Albo Nazionale Gestori Ambientali',
+      //   'Categoria 8 - Intermediazione rifiuti',
+      //   'ISO 9001 - Gestione Qualità',
+      //   'ISO 14001 - Gestione Ambientale',
+      //   'ISO 45001 - Sicurezza sul lavoro',
+      // ],
       cta: {
         title: 'Hai bisogno di servizi di strip-out?',
         description:
@@ -252,13 +240,13 @@ export const servicesContent = {
         buttonText: 'Richiedi un preventivo',
       },
     },
-    'rifiuti-pericolosi': {
-      id: 'rifiuti-pericolosi',
-      title: 'Gestione Rifiuti Pericolosi e Bonifica Ambientale',
+    bonifiche: {
+      id: 'bonifiche',
+      title: 'Bonifiche Ambientali',
       subtitle: "Soluzioni sicure e conformi per la tutela dell'ambiente",
       heroImage: '/images/horizontal-3.jpg',
       description:
-        "Gestione sicura e conforme di rifiuti pericolosi e bonifiche ambientali, incluso amianto. Servizi specializzati con focus su sicurezza e tutela dell'ambiente.",
+        "Bonifiche ambientali e gestione sicura di materiali speciali, incluso amianto. Servizi specializzati con focus su sicurezza e tutela dell'ambiente.",
       benefits: [
         {
           title: 'Sicurezza garantita',
@@ -269,7 +257,7 @@ export const servicesContent = {
         {
           title: 'Conformità normativa',
           description:
-            'Rispetto di tutte le normative vigenti in materia di rifiuti pericolosi',
+            'Rispetto di tutte le normative vigenti per la gestione dei rifiuti pericolosi',
           icon: 'check',
         },
         {
@@ -310,12 +298,6 @@ export const servicesContent = {
           description:
             'Raccolta, trasporto e smaltimento dei rifiuti pericolosi',
         },
-        {
-          step: 5,
-          title: 'Certificazione e documentazione',
-          description:
-            "Rilascio di certificazioni e documentazione completa dell'intervento",
-        },
       ],
       categories: [
         {
@@ -325,9 +307,9 @@ export const servicesContent = {
           image: '/images/horizontal-3.jpg',
         },
         {
-          title: 'Gestione rifiuti speciali',
+          title: 'Gestione materiali speciali',
           description:
-            'Trattamento e smaltimento di rifiuti pericolosi e speciali',
+            'Trattamento e smaltimento di materiali speciali e contaminati',
           image: '/images/horizontal-1.jpg',
         },
         {

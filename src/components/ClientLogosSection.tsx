@@ -35,7 +35,7 @@ export default function ClientLogosSection() {
           transition={{ duration: 0.5 }}
           className="mb-16 text-center text-4xl font-bold text-text"
         >
-          I nostri collaboratori
+          Con chi abbiamo lavorato
         </motion.h2>
 
         <div className="relative overflow-hidden">

@@ -11,7 +11,7 @@ const testimonials = [
       "Desmare ha completato la demolizione del nostro vecchio edificio industriale con grande professionalità. Sono stati estremamente attenti alla sicurezza e hanno recuperato la maggior parte dei materiali riducendo l'impatto ambientale.",
     author: 'Marco Rossi',
     position: 'Direttore Operativo, TechBuild SpA',
-    image: '/images/horizontal-1.jpg', // Placeholder - would be replaced with actual testimonial images
+    image: '/images/img/demolition-excavator-action.jpg', // Industrial demolition project
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const testimonials = [
       "Abbiamo scelto Desmare per il loro approccio sostenibile. La loro capacità di recuperare e riutilizzare i materiali da demolizione è stata impressionante, aiutandoci a ridurre i costi e l'impatto ambientale del nostro progetto.",
     author: 'Laura Bianchi',
     position: 'Project Manager, GreenDev Srl',
-    image: '/images/horizontal-2.jpg',
+    image: '/images/img/construction-site-drone-view-earthmoving.jpg',
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const testimonials = [
       'Il servizio di smaltimento rifiuti edili fornito da Desmare è stato impeccabile. Hanno gestito tutta la documentazione e le autorizzazioni necessarie, permettendoci di concentrarci sul nostro progetto di costruzione.',
     author: 'Alessandro Verdi',
     position: 'Titolare, Costruzioni Verdi',
-    image: '/images/horizontal-3.jpg',
+    image: '/images/img/waste-loading-into-dumpster-truck.jpg',
   },
 ];
 

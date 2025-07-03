@@ -22,11 +22,11 @@ export default function AboutPreview() {
               fornire servizi professionali che uniscono efficienza, sicurezza e
               sostenibilità.
             </p>
-            <p className="mb-8 text-lg text-text-secondary">
+            {/* <p className="mb-8 text-lg text-text-secondary">
               Ci impegniamo a garantire che i materiali di scarto vengano
               gestiti in modo responsabile, massimizzando il riutilizzo e il
               riciclo e minimizzando i rifiuti destinati alle discariche.
-            </p>
+            </p> */}
 
             <Link
               href="/chi-siamo"
@@ -57,7 +57,7 @@ export default function AboutPreview() {
           >
             <div className="relative h-[400px] overflow-hidden rounded-lg shadow-xl">
               <Image
-                src="/images/vertical-1.jpg"
+                src="/images/img/facade-dismantling-workers-metal-cutting.jpg"
                 alt="Team Desmare"
                 fill
                 className="object-cover"

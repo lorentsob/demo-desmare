@@ -52,7 +52,7 @@ export const metadataConfig = {
     services: {
       title: 'Servizi',
       description:
-        'Soluzioni complete e chiavi in mano per demolizioni, strip-out e bonifica ambientale. Servizi professionali e sostenibili.',
+        'Soluzioni complete e integrate per demolizioni, strip-out e bonifica ambientale. Servizi professionali e sostenibili.',
       keywords: [
         'servizi demolizione',
         'recupero materiali',
@@ -63,7 +63,7 @@ export const metadataConfig = {
     'services/demolizioni': {
       title: 'Demolizioni',
       description:
-        "Soluzioni chiavi in mano per demolizioni civili e industriali. Gestiamo l'intero processo, dal progetto alla gestione rifiuti, con un unico punto di contatto.",
+        "Soluzioni complete per demolizioni civili e industriali. Gestiamo l'intero processo, dal progetto alla gestione rifiuti, con un unico punto di contatto.",
       keywords: [
         'demolizioni civili',
         'demolizioni industriali',
@@ -82,14 +82,14 @@ export const metadataConfig = {
         'rimozione elementi',
       ],
     },
-    'services/rifiuti-pericolosi': {
-      title: 'Gestione Rifiuti Pericolosi',
+    'services/bonifiche': {
+      title: 'Bonifiche Ambientali',
       description:
-        "Gestione sicura e conforme di rifiuti pericolosi e bonifiche ambientali, incluso amianto. Servizi specializzati con focus su sicurezza e tutela dell'ambiente.",
+        "Gestione sicura e conforme di bonifiche ambientali e materiali speciali, incluso amianto. Servizi specializzati con focus su sicurezza e tutela dell'ambiente.",
       keywords: [
         'bonifica amianto',
-        'rifiuti pericolosi',
-        'gestione rifiuti speciali',
+        'bonifiche ambientali',
+        'gestione materiali speciali',
         'bonifica ambientale',
       ],
     },

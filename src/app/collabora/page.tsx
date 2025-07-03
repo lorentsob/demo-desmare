@@ -7,49 +7,49 @@ import Link from 'next/link';
 
 export const metadata = generateMetadata('collabora');
 
-const positions = [
+const collaborationTypes = [
   {
-    title: 'Operai Specializzati',
+    title: 'Operai specializzati',
     description:
-      'Cerchiamo operai con esperienza nel settore delle demolizioni e della bonifica ambientale. Competenze richieste:',
+      'Collaboriamo con operai specializzati nel settore delle demolizioni. Competenze che cerchiamo:',
     requirements: [
+      'Esperienza in demolizioni civili e industriali',
       'Patente C/D per mezzi pesanti',
       'Certificazioni per lavori in quota',
-      'Esperienza in cantieri edili',
       'Conoscenza delle norme di sicurezza',
     ],
   },
   {
-    title: 'Tecnici Ambientali',
+    title: 'Ingegneri',
     description:
-      'Ricerca di tecnici specializzati nella gestione e smaltimento dei rifiuti speciali. Requisiti:',
+      'Cerchiamo collaborazioni con ingegneri per la progettazione e supervisione tecnica. Competenze richieste:',
     requirements: [
-      'Laurea in Scienze Ambientali o equivalente',
-      'Conoscenza normativa ambientale',
-      'Esperienza in gestione rifiuti speciali',
-      'Certificazioni ambientali',
+      'Laurea in Ingegneria Civile o Ambientale',
+      'Esperienza in progettazione demolizioni',
+      'Conoscenza normativa tecnica e ambientale',
+      'Abilitazione professionale',
     ],
   },
   {
-    title: 'Coordinatori di Cantiere',
+    title: 'Geometri',
     description:
-      'Posizioni aperte per coordinatori con esperienza nella gestione di cantieri di demolizione. Competenze richieste:',
+      'Collaborazioni con geometri per rilievi, pratiche edilizie e coordinamento cantieri. Requisiti:',
     requirements: [
-      'Esperienza minima 5 anni nel settore',
-      'Certificazione CSP/CSE',
-      'Gestione squadre e subappaltatori',
-      'Pianificazione e controllo cantieri',
+      'Diploma di Geometra e abilitazione',
+      'Esperienza in pratiche edilizie',
+      'Competenze in rilievi topografici',
+      'Conoscenza software CAD',
     ],
   },
   {
-    title: 'Tecnici Ambientali',
+    title: 'Aziende edili',
     description:
-      'Ricerca di tecnici specializzati nella gestione e smaltimento dei rifiuti speciali. Requisiti:',
+      'Collaboriamo con aziende edili per progetti integrati di demolizione e ricostruzione. Cerchiamo:',
     requirements: [
-      'Laurea in Scienze Ambientali o equivalente',
-      'Conoscenza normativa ambientale',
-      'Esperienza in gestione rifiuti speciali',
-      'Certificazioni ambientali',
+      'Esperienza consolidata nel settore edile',
+      'Certificazioni SOA per lavori pubblici',
+      'Disponibilità a collaborazioni a lungo termine',
+      'Attrezzature e mezzi propri',
     ],
   },
 ];
@@ -65,14 +65,15 @@ export default function CollaboraPage() {
           <div className="container-custom">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="text-balance text-4xl font-bold sm:text-5xl">
-                Unisciti al team di collaboratori De.SMA.RE
+                Con chi collaboriamo
               </h1>
+              <h2 className="mt-6 text-2xl font-semibold text-primary">
+                Avete un progetto da proporci? Vi aiutiamo con la demolizione.
+              </h2>
               <p className="mt-6 text-lg text-text-secondary">
-                In Desmare crediamo che il successo dell'azienda sia il
-                risultato diretto del talento e della passione delle persone che
-                la compongono. Stiamo cercando professionisti motivati che
-                condividano i nostri valori di eccellenza, sicurezza e
-                sostenibilità.
+                Se hai un progetto, della parte di demolizione me ne occupo io.
+                Collaboriamo con professionisti qualificati e aziende del
+                settore per offrire soluzioni complete e integrate.
               </p>
             </div>
           </div>
@@ -86,20 +87,20 @@ export default function CollaboraPage() {
         <section className="py-16">
           <div className="container-custom">
             <h2 className="text-center text-3xl font-bold">
-              Le collaborazioni che stiamo cercando
+              Con chi lavoriamo
             </h2>
             <div className="mt-8 grid gap-8 lg:grid-cols-2">
-              {positions.map((position, index) => (
+              {collaborationTypes.map((collaboration, index) => (
                 <Card key={index}>
                   <CardContent className="p-6">
                     <h3 className="mb-4 text-2xl font-semibold">
-                      {position.title}
+                      {collaboration.title}
                     </h3>
                     <p className="mb-4 text-text-secondary">
-                      {position.description}
+                      {collaboration.description}
                     </p>
                     <ul className="mb-6 space-y-2">
-                      {position.requirements.map((req, idx) => (
+                      {collaboration.requirements.map((req, idx) => (
                         <li
                           key={idx}
                           className="flex items-center text-text-secondary"
@@ -124,9 +125,9 @@ export default function CollaboraPage() {
                     </ul>
                     <Button>
                       <Link
-                        href={`mailto:${contact.email}?subject=Collaborazione per ${position.title}`}
+                        href={`mailto:${contact.email}?subject=Proposta di collaborazione per ${collaboration.title}`}
                       >
-                        Contattaci
+                        Proponi collaborazione
                       </Link>
                     </Button>
                   </CardContent>
@@ -140,17 +141,19 @@ export default function CollaboraPage() {
         <section className="bg-primary/5 py-16">
           <div className="container-custom">
             <div className="text-center">
-              <h2 className="text-3xl font-bold">Hai altre competenze?</h2>
+              <h2 className="text-3xl font-bold">Hai un progetto per noi?</h2>
               <p className="mt-4 text-lg text-text-secondary">
-                Collaboriamo con professionisti qualificati in tutto il
-                territorio. Se hai competenze nel settore delle demolizioni,
-                della bonifica ambientale o della gestione dei rifiuti,
-                contattaci per valutare insieme opportunità di collaborazione.
+                Se hai un progetto che include una fase di demolizione,
+                contattaci. Ci occupiamo di tutta la parte demolizione,
+                permettendoti di concentrarti sul resto del progetto.
+                Collaboriamo con professionisti e aziende in tutta Italia.
               </p>
               <div className="mt-8">
                 <Button>
-                  <Link href="mailto:info@desmare.it?subject=Proposta di Collaborazione">
-                    Invia una proposta di collaborazione
+                  <Link
+                    href={`mailto:${contact.email}?subject=Proposta di Progetto con Demolizione`}
+                  >
+                    Proponi il tuo progetto
                   </Link>
                 </Button>
               </div>

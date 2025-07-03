@@ -2,120 +2,86 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// mittente e destinatario admin in un’unica costante così lo tocchi solo qui
+const FROM = 'Desmare <lorenzoboschi39@gmail.com>';
+const ADMIN = 'lorenzoboschi39@gmail.com';
+
 export async function POST(request: Request) {
   console.log('API Route: Inizio elaborazione richiesta');
 
   try {
-    // Verifica API key
     if (!process.env.RESEND_API_KEY) {
-      console.error(
-        "API Route: RESEND_API_KEY non trovata nelle variabili d'ambiente",
-      );
+      console.error('API Route: RESEND_API_KEY mancante');
       return Response.json(
         { error: 'Configurazione API mancante' },
         { status: 500 },
       );
     }
 
-    console.log('API Route: Parsing del body della richiesta');
     const body = await request.json();
     const { name, email, phone, service, message } = body;
-
     console.log('API Route: Dati ricevuti:', { name, email, phone, service });
 
-    // Email per il cliente (lorenzoboschi39@gmail.com)
-    console.log('API Route: Invio email di conferma al cliente:', email);
+    /* ---------- 1. conferma al cliente ---------- */
     const customerEmail = await resend.emails.send({
-      from: 'Desmare <onboarding@resend.dev>',
+      from: FROM,
       to: [email],
       subject: 'Conferma richiesta preventivo - Desmare',
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333;">Grazie per averci contattato!</h2>
-          <p>Gentile ${name},</p>
-          <p>Abbiamo ricevuto la tua richiesta di preventivo per il servizio di <strong>${service}</strong>.</p>
-          <p>Un nostro operatore ti contatterà al più presto per discutere i dettagli della tua richiesta.</p>
-          <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin-top: 20px;">
-            <h3 style="color: #333; margin-top: 0;">Riepilogo della tua richiesta:</h3>
-            <p><strong>Servizio:</strong> ${service}</p>
-            <p><strong>Messaggio:</strong></p>
-            <p style="white-space: pre-wrap;">${message}</p>
-          </div>
-          <p style="margin-top: 20px;">Cordiali saluti,<br>Il team di Desmare</p>
+        <div style="font-family: Arial; max-width:600px; margin:0 auto;">
+          <h2>Grazie per averci contattato, ${name}!</h2>
+          <p>Richiesta per: <strong>${service}</strong></p>
+          <p>${message}</p>
+          <p>Ti risponderemo al più presto.</p>
         </div>
       `,
+      text: `Grazie ${name}! Abbiamo ricevuto la tua richiesta di preventivo (${service}).`,
     });
 
     if (customerEmail.error) {
-      console.error(
-        'API Route: Errore invio email al cliente:',
-        customerEmail.error,
-      );
+      console.error('API Route: Errore email cliente:', customerEmail.error);
     } else {
       console.log(
-        'API Route: Email al cliente inviata con successo. ID:',
+        'API Route: Email cliente inviata, ID:',
         customerEmail.data?.id,
       );
     }
 
-    // Email per l'amministratore (lorenzo.boschi@isiadesign.fi.it)
-    const adminEmailAddress = 'lorenzo.boschi@isiadesign.fi.it';
-    console.log(
-      "API Route: Invio email di notifica all'amministratore:",
-      adminEmailAddress,
-    );
+    /* ---------- 2. notifica interna ---------- */
     const adminEmail = await resend.emails.send({
-      from: 'Desmare <onboarding@resend.dev>',
-      to: [adminEmailAddress],
+      from: FROM,
+      to: [ADMIN],
       subject: `Nuova richiesta preventivo - ${service}`,
+      replyTo: email,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333;">Nuova richiesta preventivo</h2>
-          <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
-            <p><strong>Nome:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Telefono:</strong> ${phone}</p>
-            <p><strong>Servizio:</strong> ${service}</p>
-            <p><strong>Messaggio:</strong></p>
-            <p style="white-space: pre-wrap;">${message}</p>
-          </div>
+        <div style="font-family: Arial; max-width:600px; margin:0 auto;">
+          <h2>Nuova richiesta preventivo</h2>
+          <p><strong>Nome:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Telefono:</strong> ${phone}</p>
+          <p><strong>Servizio:</strong> ${service}</p>
+          <p><strong>Messaggio:</strong></p>
+          <p>${message}</p>
         </div>
       `,
+      text: `Preventivo da ${name} (${email}) – ${service}\n${message}`,
     });
 
     if (adminEmail.error) {
-      console.error(
-        "API Route: Errore invio email all'amministratore:",
-        adminEmail.error,
-      );
+      console.error('API Route: Errore email admin:', adminEmail.error);
     } else {
-      console.log(
-        "API Route: Email all'amministratore inviata con successo. ID:",
-        adminEmail.data?.id,
-      );
+      console.log('API Route: Email admin inviata, ID:', adminEmail.data?.id);
     }
 
     if (customerEmail.error || adminEmail.error) {
       return Response.json(
-        {
-          error: "Errore nell'invio delle email",
-          details: {
-            customer: customerEmail.error,
-            admin: adminEmail.error,
-          },
-        },
+        { error: 'Errore nell’invio delle email' },
         { status: 500 },
       );
     }
 
     console.log('API Route: Tutte le email inviate con successo');
-    return Response.json({
-      success: true,
-      data: {
-        customerEmail: customerEmail.data,
-        adminEmail: adminEmail.data,
-      },
-    });
+    return Response.json({ success: true });
   } catch (error) {
     console.error('API Route: Errore generale:', error);
     return Response.json(

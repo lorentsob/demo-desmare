@@ -1,7 +1,7 @@
 'use client';
 
 import { heroContent } from '@/content/hero';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -9,6 +9,29 @@ import QuoteRequestModal from './QuoteRequestModal';
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hoveredService, setHoveredService] = useState<string | null>(null);
+
+  const getAcronymColor = (acronym: string) => {
+    if (!hoveredService) return 'text-primary';
+
+    const hoveredAcronym = heroContent.title.services.find(
+      (service) => service.name.toLowerCase() === hoveredService.toLowerCase(),
+    )?.acronym;
+
+    return acronym === hoveredAcronym ? 'text-primary' : 'text-text';
+  };
+
+  const getCurrentImages = () => {
+    if (!hoveredService) return heroContent.images.default;
+
+    const serviceKey = hoveredService.toLowerCase();
+    return (
+      heroContent.images[serviceKey as keyof typeof heroContent.images] ||
+      heroContent.images.default
+    );
+  };
+
+  const currentImages = getCurrentImages();
 
   return (
     <section
@@ -27,18 +50,53 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="mb-6 text-balance text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              {heroContent.title.prefix}{' '}
-              <span className="text-primary">
-                {heroContent.title.highlighted[0]}
-              </span>{' '}
-              e{' '}
-              <span className="text-primary">
-                {heroContent.title.highlighted[1]}
-              </span>
+              <motion.span
+                className={`transition-colors duration-100 ${getAcronymColor('De')}`}
+              >
+                De
+              </motion.span>
+              <motion.span
+                className={`transition-colors duration-100 ${getAcronymColor('Sma')}`}
+              >
+                .Sma
+              </motion.span>
+              <motion.span
+                className={`transition-colors duration-100 ${getAcronymColor('Re')}`}
+              >
+                .Re.
+              </motion.span>
             </h1>
-            <p className="mb-8 max-w-lg text-xl text-text-secondary">
+
+            <h2 className="mb-6 text-balance text-3xl font-bold leading-tight sm:text-5xl lg:text-5xl">
+              {heroContent.title.subtitle}{' '}
+              {heroContent.title.services.map((service, index) => (
+                <span key={service.name}>
+                  <Link
+                    href={service.href}
+                    className="text-default underline transition-colors duration-100 hover:text-primary/80"
+                    onMouseEnter={() => setHoveredService(service.name)}
+                    onMouseLeave={() => setHoveredService(null)}
+                    onFocus={() => setHoveredService(service.name)}
+                    onBlur={() => setHoveredService(null)}
+                  >
+                    {service.name}
+                  </Link>
+                  {index < heroContent.title.services.length - 1 && (
+                    <span>
+                      {index === heroContent.title.services.length - 2
+                        ? ' e '
+                        : ', '}
+                    </span>
+                  )}
+                  {index === heroContent.title.services.length - 1 && '.'}
+                </span>
+              ))}
+            </h2>
+
+            <p className="mb-8 max-w-lg text-lg text-text-secondary">
               {heroContent.description}
             </p>
+
             <div className="flex flex-col gap-4 sm:flex-row">
               <button
                 onClick={() => setIsModalOpen(true)}
@@ -98,38 +156,94 @@ export default function Hero() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="relative h-36 overflow-hidden rounded-2xl shadow-xl sm:h-56">
-                  <Image
-                    src="/images/horizontal-1.jpg"
-                    alt="Servizi di demolizione"
-                    fill
-                    className="object-cover"
-                  />
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`${currentImages[0]}-${hoveredService || 'default'}`}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.4, ease: 'easeInOut' }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={currentImages[0]}
+                        alt="Servizi di demolizione"
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
                 <div className="relative h-36 overflow-hidden rounded-2xl shadow-xl sm:h-44">
-                  <Image
-                    src="/images/horizontal-4.jpg"
-                    alt="Recupero materiali"
-                    fill
-                    className="object-cover"
-                  />
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`${currentImages[1]}-${hoveredService || 'default'}`}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: 'easeInOut',
+                        delay: 0.1,
+                      }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={currentImages[1]}
+                        alt="Recupero materiali"
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
               <div className="mt-8 space-y-4">
                 <div className="relative h-36 overflow-hidden rounded-2xl shadow-xl sm:h-44">
-                  <Image
-                    src="/images/horizontal-2.jpg"
-                    alt="Smaltimento rifiuti"
-                    fill
-                    className="object-cover"
-                  />
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`${currentImages[2]}-${hoveredService || 'default'}`}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: 'easeInOut',
+                        delay: 0.2,
+                      }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={currentImages[2]}
+                        alt="Smaltimento rifiuti"
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
                 <div className="relative h-36 overflow-hidden rounded-2xl shadow-xl sm:h-56">
-                  <Image
-                    src="/images/horizontal-3.jpg"
-                    alt="Attrezzature specializzate"
-                    fill
-                    className="object-cover"
-                  />
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`${currentImages[3]}-${hoveredService || 'default'}`}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: 'easeInOut',
+                        delay: 0.3,
+                      }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={currentImages[3]}
+                        alt="Attrezzature specializzate"
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
