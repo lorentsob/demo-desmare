@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     // Email di conferma per il cliente
     console.log('Contact API: Invio email di conferma al cliente:', email);
     const customerEmail = await resend.emails.send({
-      from: 'Desmare <onboarding@resend.dev>',
+      from: 'Desmare <info@desmare.it>',
       to: [email],
       subject: 'Conferma ricezione messaggio - Desmare',
       html: `
